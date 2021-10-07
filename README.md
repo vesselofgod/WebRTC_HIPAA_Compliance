@@ -36,6 +36,6 @@ Node.js | WebRTC
 ![nodejs](https://user-images.githubusercontent.com/18081105/135970378-9d7cf78a-4fa6-41a3-87a9-1c675bb092c1.jpg) | ![webrtc](https://user-images.githubusercontent.com/18081105/135970746-c419bfd5-5fce-4d97-9194-c5ed8440fbf5.png)
  
 ## 🔧 프로젝트 관리 (Project Management)
- - [개발 일정(Develop Schedule)](https://trello.com/b/6z3kwNlv/locka)
- - [Class Diagram](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/Class-Diagram)
- - [Mockup Screens](https://github.com/osamhack2020/APP_LOCKA_DreamY/wiki/Mockup-Screens)  
+ - [개발 일정(Develop Schedule)](https://trello.com/b/JlaOjArx/live-telemidicine-service)
+ - [Class Diagram](https://github.com/vesselofgod/WebRTC_HIPAA_Compliance/wiki/Class-Diagram)
+ - [Mockup Screens](https://github.com/vesselofgod/WebRTC_HIPAA_Compliance/wiki/Mockup-Screens)  
