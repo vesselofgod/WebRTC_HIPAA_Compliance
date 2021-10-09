@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/webtutsplus/videoChat-WebFrontend.git"
+    "url": "git+https://github.com/vesselofgod/WebRTC_HIPAA_Compliance.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/webtutsplus/videoChat-WebFrontend/issues"
+    "url": "https://github.com/vesselofgod/WebRTC_HIPAA_Compliance/issues"
   },
-  "homepage": "https://github.com/webtutsplus/videoChat-WebFrontend#readme",
+  "homepage": "https://github.com/vesselofgod/WebRTC_HIPAA_Compliance#readme",
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.17.1",
