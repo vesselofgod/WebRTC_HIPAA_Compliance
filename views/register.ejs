@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta  charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>register</title>
+    </head>
+    <body>
+        <form>
+            <h2>회원가입</h2>
+            name:<input type="text" name="name"/><br>
+            pw:<input type="password" name="pw"/>
+        </form>
+        <button class="ajaxsend">submit</button>
+        <a href="/"><button>home</button></a>
+
+        <div class="result"></div>
+        <script>
+            document.querySelector('.ajaxsend').addEventListener('click', function(){
+                var name = document.forms[0].elements[0].value;
+                var pw = document.forms[0].elements[1].value;
+                var inputdata={'name':name,'pw':pw}
+                ajax_send('https://localhost:8000/register', inputdata)
+
+                function ajax_send(url,inputdata){
+                    var data = JSON.stringify(inputdata)
+                    var xhr = new XMLHttpRequest()
+                    xhr.open('POST',url)
+                    xhr.setRequestHeader('content-type','application/json')
+                    xhr.send(data)
+
+                    xhr.addEventListener('load',function(){
+                        var result = JSON.parse(xhr.responseText)
+                        if(result.result=='fail'){
+                            document.querySelector('.result').innerHTML='동일한 name의 사용자가 이미 존재합니다.'
+                        }
+                        else{
+                            document.querySelector('.result').innerHTML='회원가입에 성공하였습니다.'
+                        }
+                    })
+                }
+            })
+        </script>
+    </body>
+</html>
