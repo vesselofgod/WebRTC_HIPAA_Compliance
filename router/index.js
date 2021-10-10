@@ -96,12 +96,12 @@ router.post('/login',(req,res)=>{
     });
 });
 
-app.get('/register',(req,res)=>{
+router.get('/register',(req,res)=>{
     console.log('회원가입 페이지');
     res.render('register');
 });
 
-app.post('/register',(req,res)=>{
+router.post('/register',(req,res)=>{
     console.log('회원가입 하는중')
     const body = req.body;
     const id = body.id;
@@ -109,10 +109,10 @@ app.post('/register',(req,res)=>{
     const name = body.name;
     const age = body.age;
 
-    client.query('select * from userdata where id=?',[id],(err,data)=>{
+    connection.query('select * from userdata where id=?',[id],(err,data)=>{
         if(data.length == 0){
             console.log('회원가입 성공');
-            client.query('insert into userdata(id, name, age, pw) values(?,?,?,?)',[
+            connection.query('insert into userdata(id, name, age, pw) values(?,?,?,?)',[
                 id, name, age, pw
             ]);
             res.redirect('/');
