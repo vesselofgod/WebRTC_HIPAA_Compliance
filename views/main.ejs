@@ -7,7 +7,7 @@
     <title>PRO</title>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/354885cafc.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/styles/login.css">
+    <link rel="stylesheet" href="/styles/index.css">
 </head>
 <body>
     <nav>
@@ -20,29 +20,16 @@
                 <ul>
                     <li><a href="">show</a></li>
                     <li><a href="">test</a></li>
+                <% if(is_logined == false){ %>
                     <li><a href="/login">login</a></li>
-                    <li><a href="/register">register</a></li>
+                    <li><a href="/register">register</a></li>  
+                <% }else{ %>
+                    <li><%= name %> 님 환영합니다!</li>
+                    <li><a href="/logout">logout</a></li>  
+                <% } %>
                 </ul>
             </div>
         </div>
     </nav>
-
-    <section>
-        <div class="container_form">
-            <form method="post">
-                <ul>
-                    <li>
-                        <label>아이디는</label>
-                        <input type="text" name='id' required>
-                    </li>
-                    <li>
-                        <label>비밀번호</label>
-                        <input type="password" name="pw" required>
-                    </li>
-                </ul>
-                <input type="submit" value="로그인">
-            </form>
-        </div>
-    </section>
 </body>
 </html>
