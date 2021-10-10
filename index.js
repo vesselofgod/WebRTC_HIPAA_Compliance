@@ -8,16 +8,31 @@ var http = require('http');
 //For signalling in WebRTC
 var socketIO = require('socket.io');
 
+const mysql=require('mysql')
+const bodyParser = require('body-parser')
+var session = require('express-session')
+const router = require('./router/index')
+
+app.use(session({
+    secret: 'my key',
+    resave: false,
+    saveUninitialized:true,
+    //store: sessionStore
+}))
+app.use(router)
+app.set('views','./views')
+app.set('view engine', 'ejs')
 
 app.use(express.static('public'))
-
-app.get("/", function(req, res){
-	res.render("index.ejs");
-});
 
 var server = http.createServer(app);
 
 server.listen(process.env.PORT || 8000);
+
+
+app.get("/", function(req, res){
+	res.render("index.ejs");
+});
 
 var io = socketIO(server);
 
