@@ -11,17 +11,28 @@ var socketIO = require('socket.io');
 const mysql=require('mysql')
 const bodyParser = require('body-parser')
 var session = require('express-session')
+var MySQLStore = require('express-mysql-session')(session)
 const router = require('./router/index')
 
+var options = {
+    host:'localhost',
+    user:'root',
+    password:'2207',
+    database:'user'
+}
+var sessionStore = new MySQLStore(options)
+
+
+app.set('views','./views')
+app.set('view engine', 'ejs')
+app.use(bodyParser.urlencoded({extended:false}));
 app.use(session({
     secret: 'my key',
     resave: false,
     saveUninitialized:true,
-    //store: sessionStore
+    store: sessionStore
 }))
 app.use(router)
-app.set('views','./views')
-app.set('view engine', 'ejs')
 
 app.use(express.static('public'))
 
