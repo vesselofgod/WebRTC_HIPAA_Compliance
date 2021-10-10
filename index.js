@@ -40,11 +40,11 @@ var server = http.createServer(app);
 
 server.listen(process.env.PORT || 8000);
 
-
+/*
 app.get("/", function(req, res){
 	res.render("index.ejs");
 });
-
+*/
 var io = socketIO(server);
 
 io.sockets.on('connection', function(socket) {
