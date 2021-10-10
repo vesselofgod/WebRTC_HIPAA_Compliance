@@ -62,6 +62,8 @@ router.post('/login',(req,res)=>{
 
     connection.query('select * from userdata where id=?',[id],(err,data)=>{
         // 로그인 확인
+        console.log('data객체',data);
+        console.log('data길이',data.length);
         /*console.log('data객체',data);
         console.log('data[0]',data[0]);
         console.log('입력 id : ',id);
@@ -72,26 +74,41 @@ router.post('/login',(req,res)=>{
         /*if(err){
             throw err
         }*/
-        if((id == data[0].id || pw == data[0].pw) && data.length>0){
-            console.log('로그인 성공');
-            // 세션에 추가
-            req.session.is_logined  = true;
-            req.session.name = data.name;
-            req.session.id = data.id;
-            req.session.pw = data.pw;
-            req.session.save(function(){ // 세션 스토어에 적용하는 작업
-                res.render('login',{ // 정보전달
-                    name : data[0].name,
-                    id : data[0].id,
-                    age : data[0].age,
-                    is_logined : true
+        if(data.length>0){
+            if(id == data[0].id && pw == data[0].pw){
+                console.log('로그인 성공');
+                // 세션에 추가
+                req.session.is_logined  = true;
+                req.session.name = data.name;
+                req.session.id = data.id;
+                req.session.pw = data.pw;
+                req.session.save(function(){ // 세션 스토어에 적용하는 작업
+                    res.render('main',{ // 정보전달
+                        name : data[0].name,
+                        id : data[0].id,
+                        age : data[0].age,
+                        is_logined : true
+                    });
                 });
-            });
+            }
+            else{
+                req.session.is_logined  = false;
+                console.log('비밀번호가 틀립니다.');
+                req.session.save(function(){ // 세션 스토어에 적용하는 작업
+                    res.render('login',{ // 정보전달
+                        is_logined : false
+                    });
+                });
+            }
         }
         else{
+            req.session.is_logined  = false;
             console.log('로그인 실패');
-            res.json({'result':'false'})
-            res.render('login');
+            req.session.save(function(){ // 세션 스토어에 적용하는 작업
+                res.render('login',{ // 정보전달
+                    is_logined : false
+                });
+            });
         }
     });
 });
@@ -131,6 +148,11 @@ router.get('/logout',(req,res)=>{
         res.redirect('/');
     });
 
+});
+
+router.get('/show',(req,res)=>{
+    console.log('화상상담');
+    res.render('index');
 });
 
 
