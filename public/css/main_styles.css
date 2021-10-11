@@ -11459,6 +11459,7 @@ header.masthead .masthead-heading {
   transition: opacity ease-in-out 0.25s;
 }
 #portfolio .portfolio-item .portfolio-link .portfolio-hover .portfolio-hover-content {
+  /*portfolio 화면 +*/
   font-size: 1.25rem;
   color: white;
 }
