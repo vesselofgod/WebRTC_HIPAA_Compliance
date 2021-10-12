@@ -1,4 +1,4 @@
-# 📋 WebRTC_HIPAA_Compliance
+# 📋 Medisee
 원격 의료 화상회의 툴
 
 ---
