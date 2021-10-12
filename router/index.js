@@ -51,7 +51,7 @@ router.get('/',(req,res)=>{
 
 router.get('/login',(req,res)=>{
     console.log('로그인 작동');
-    res.render('login');
+    //res.render('login');
 });
 
 router.post('/login',(req,res)=>{
