@@ -51,7 +51,7 @@ router.get('/',(req,res)=>{
 
 router.get('/login',(req,res)=>{
     console.log('로그인 작동');
-    //res.render('login');
+    res.render('new_login');
 });
 
 router.post('/login',(req,res)=>{
@@ -115,7 +115,7 @@ router.post('/login',(req,res)=>{
 
 router.get('/register',(req,res)=>{
     console.log('회원가입 페이지');
-    res.render('register');
+    res.render('new_register');
 });
 
 router.post('/register',(req,res)=>{
