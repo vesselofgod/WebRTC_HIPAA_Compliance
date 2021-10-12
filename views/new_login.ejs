@@ -39,10 +39,14 @@
         <!-- Contact  로그인 페이지로 바꿀 예정-->
         <section class="page-section" id="contact">
             <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Login</h2>
+                <div class="login-page-text">
+                    <h2 class="section-heading text-uppercase">로그인</h2>
+                </div>
+                <div class="login-page-text">
                     <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
                 </div>
+                
+                
                 <!-- * * * * * * * * * * * * * * *-->
                 <!-- * * SB Forms Contact Form * *-->
                 <!-- * * * * * * * * * * * * * * *-->
@@ -50,33 +54,40 @@
                 <!-- To make this form functional, sign up at-->
                 <!-- https://startbootstrap.com/solution/contact-forms-->
                 <!-- to get an API token!-->
-                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                <form method="post" id="contactForm" >
                     <div class="row align-items-stretch mb-5">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <!-- Name input-->
-                                <input class="form-control" id="name" type="text" placeholder="Your Name *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                        <div class="col-md-3">
+                            
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group form-group-textarea mb-md-0">
+                                <!-- Message input-->
+                                <h2 class="login-text-form" style="color:white">ID</h2>
+                                <h2 class="login-text-form" style="color:white">Password</h2> 
                             </div>
+                        </div>
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <!-- Email address input-->
-                                <input class="form-control" id="email" type="email" placeholder="Your Email *" data-sb-validations="required,email" />
-                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                                <input class="form-control" name="id" type=text" placeholder="Your Id *" required/>
+                                <!-- <div class="invalid-feedback" data-sb-feedback="email:required">An Id is required.</div> -->
                             </div>
                             <div class="form-group mb-md-0">
                                 <!-- Phone number input-->
-                                <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                                <input class="form-control" name="pw" type="password" placeholder="Your Password *"  required/>
+                                <!--<div class="invalid-feedback" data-sb-feedback="phone:required">A password is required.</div>-->
                             </div>
                         </div>
-                        <div class="col-md-6">
+                      
+
+                        <!-- Phone number input-->
+<!--                         <div class="col-md-6">
                             <div class="form-group form-group-textarea mb-md-0">
                                 <!-- Message input-->
-                                <textarea class="form-control" id="message" placeholder="Your Message *" data-sb-validations="required"></textarea>
+                                <!--  <textarea class="form-control" id="message" placeholder="Your Message *" data-sb-validations="required"></textarea>
                                 <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <!-- Submit success message-->
                     <!---->
@@ -84,19 +95,17 @@
                     <!-- has successfully submitted-->
                     <div class="d-none" id="submitSuccessMessage">
                         <div class="text-center text-white mb-3">
-                            <div class="fw-bolder">Form submission successful!</div>
-                            To activate this form, sign up at
-                            <br />
-                            <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                            <div class="fw-bolder">로그인이 완료되었습니다.</div>
                         </div>
                     </div>
                     <!-- Submit error message-->
                     <!---->
                     <!-- This is what your users will see when there is-->
                     <!-- an error submitting the form-->
-                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">중복된 ID입니다.</div></div>
                     <!-- Submit Button-->
-                    <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">Login</button></div>
+                    <div class="text-center"><input class="btn btn-warning btn-xl text-uppercase" value="로그인"  id="submitButton" type="submit"></div>
+                    <!--class="btn btn-primary btn-xl text-uppercase disabled" -->
                 </form>
             </div>
         </section>

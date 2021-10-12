@@ -136,7 +136,7 @@ router.post('/register',(req,res)=>{
         }else{
             console.log('회원가입 실패');
             res.send('<script>alert("회원가입 실패");</script>')
-            res.redirect('/login');
+            res.redirect('/new_register');
         }
     });
 });
