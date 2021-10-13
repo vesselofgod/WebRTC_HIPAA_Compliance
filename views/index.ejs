@@ -7,6 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;500;600&family=Josefin+Slab&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/styles.css">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
   <!-- <link rel="stylesheet" href="/css/main.css" /> -->
 
@@ -22,8 +25,111 @@
 			<div class="remote_div" id="div2">
 				<video id="remoteVideo" class="" autoplay playsinline></video>
 			</div>
-    </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body messages-box">
+              <ul class="list-unstyled messages-list">
+                  <li class="messages-you clearfix">
+                      <span class="message-img img-circle">
+                          <img src="https://demo.bootstrap.news/bootnews/assets/img/avatar/avatar2.png" alt="User Avatar" class="avatar-sm border rounded-circle">
+                      </span>
+                      <div class="message-body clearfix">
+                          <div class="message-header">
+                              <strong class="messages-title">John Dave</strong> 
+                              <small class="time-messages text-muted">
+                                  <span class="fas fa-time"></span>1 mins ago
+                              </small>
+                          </div>
+                          <p class="messages-p">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                              dolor, quis ullamcorper ligula sodales.
+                          </p>
+                      </div>
+                  </li>
+                  <li class="messages-me clearfix">
+                      <span class="message-img">
+                          <img src="https://demo.bootstrap.news/bootnews/assets/img/avatar/avatar1.png" alt="User Avatar" class="avatar-sm border rounded-circle">
+                      </span>
+                      <div class="message-body clearfix">
+                          <div class="message-header">
+                              <strong class="messages-title">Me</strong> 
+                              <small class="time-messages text-muted">
+                                  <span class="fas fa-time"></span> <span class="minutes">1</span> mins ago
+                              </small>
+                          </div>
+                          <p class="messages-p">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                              dolor, quis ullamcorper ligula sodales.
+                          </p>
+                      </div>
+                  </li>
+                  <li class="messages-you clearfix">
+                      <span class="message-img">
+                          <img src="https://demo.bootstrap.news/bootnews/assets/img/avatar/avatar2.png" alt="User Avatar" class="avatar-sm border rounded-circle">
+                      </span>
+                      <div class="message-body clearfix">
+                          <div class="message-header">
+                              <strong class="messages-title">John Dave</strong> 
+                              <small class="time-messages text-muted">
+                                  <span class="fas fa-time"></span>12 mins ago
+                              </small>
+                          </div>
+                          <p class="messages-p">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                              dolor, quis ullamcorper ligula sodales.
+                          </p>
+                      </div>
+                  </li>
+                  <li class="messages-me clearfix">
+                      <span class="message-img">
+                          <img src="https://demo.bootstrap.news/bootnews/assets/img/avatar/avatar1.png" alt="User Avatar" class="avatar-sm border rounded-circle">
+                      </span>
+                      <div class="message-body clearfix">
+                          <div class="message-header">
+                              <strong class="messages-title">Me</strong> 
+                              <small class="time-messages text-muted">
+                                  <span class="fas fa-time"></span>12 mins ago
+                              </small>
+                          </div>
+                          <p class="messages-p">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                              dolor, quis ullamcorper ligula sodales.
+                          </p>
+                      </div>
+                  </li>
+                  <li class="messages-you clearfix">
+                      <span class="message-img">
+                          <img src="https://demo.bootstrap.news/bootnews/assets/img/avatar/avatar2.png" alt="User Avatar" class="avatar-sm border rounded-circle">
+                      </span>
+                      <div class="message-body clearfix">
+                          <div class="message-header">
+                              <strong class="messages-title">John Dave</strong> 
+                              <small class="time-messages text-muted">
+                                  <span class="fas fa-time"></span>12 mins ago
+                              </small>
+                          </div>
+                          <p class="messages-p">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                              dolor, quis ullamcorper ligula sodales.
+                          </p>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+          <div class="card-header">
+              <form id="send-message" class="send-message-form">
+                  <div class="input-group">
+                      <input id="input-me" type="text" name="messages" class="form-control input-sm" placeholder="Type your message here..." />
+                      <span class="input-group-append">
+                          <button class="btn btn-primary" type="submit">Send <i class="fas fa-airplane"></i></button>
+                      </span>
+                  </div>
+              </form>
+          </div>
+      </div>
+      </div>
 
+    </div>
   </div>
   
 
@@ -40,6 +146,9 @@
 
   <!-- Import script containing WebRTC related functions -->
   <script src="js\main.js"></script>
+
+  <!-- Import script containing message module -->
+  <script src="js\message.js"></script>
   
 </body>
 
