@@ -11825,3 +11825,9 @@ login-body{
   text-align: center;
   height: 50%;
 }
+
+
+.page-container
+{
+  height: 100vh;
+}
