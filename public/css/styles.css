@@ -403,6 +403,13 @@ width: 33%;
 .rounded-circle {
   border-radius: 50% !important;
 }
+
+.icon_color
+{
+	border-color:#2ebeec;
+	background-color: #2ebeec;
+}
+
 /*퍼온것들;*/
 
 
