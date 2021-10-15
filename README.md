@@ -1,14 +1,17 @@
-# 📋 Medisee
-원격 의료 화상회의 툴
+# 📋 메디로그
+![메디로그 소개](https://user-images.githubusercontent.com/18081105/137470716-273ad6a5-bb46-4c86-84a0-f6114e129834.png)
 
 ---
 ## ▶ 프로젝트 소개
+![메디로그 소개2](https://user-images.githubusercontent.com/18081105/137470874-4235e53d-1d2a-470d-8112-53f0a1c83f0a.png)
+
+## 🔀 개발 방향
+![기능](https://user-images.githubusercontent.com/18081105/137470972-a7d8fff1-c6dc-4b7c-a462-6ced70f5e963.png)
 
 
 ## 💡 핵심 기능
 
 
-## 🔀 개발 방향
 
  
 ## ✅ 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
@@ -19,6 +22,11 @@
 - ```npm install```
 - ```node index.js```
 - open web browser and connect ```localhost:8000```
+
+
+## 🙏 팀 정보 (Team Information)
+![성환이형 소개](https://user-images.githubusercontent.com/18081105/137470010-135af834-d417-43b6-b6e5-32faf57c8ece.png)
+![내 소개](https://user-images.githubusercontent.com/18081105/137469654-203e971a-d4e4-430a-bbee-a0cd67a54246.png)
 
 
 ## ⚙ 기술 스택 (Technique Used)
