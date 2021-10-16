@@ -95,19 +95,23 @@ router.post('/login',(req,res)=>{
                 req.session.is_logined  = false;
                 console.log('비밀번호가 틀립니다.');
                 req.session.save(function(){ // 세션 스토어에 적용하는 작업
-                    res.render('login',{ // 정보전달
+                    /*res.render('login',{ // 정보전달*/
                         is_logined : false
-                    });
+                    /*});*/
+                    res.send("<script>alert('ID or password is wrong..');  location.href='/login';</script>");
                 });
+
             }
         }
         else{
             req.session.is_logined  = false;
+            
             console.log('로그인 실패');
             req.session.save(function(){ // 세션 스토어에 적용하는 작업
-                res.render('login',{ // 정보전달
+                //res.render('login',{ // 정보전달
                     is_logined : false
-                });
+                //});
+                res.send("<script>alert('ID or password is wrong..');  location.href='/login';</script>");
             });
         }
     });
@@ -127,6 +131,7 @@ router.post('/register',(req,res)=>{
     const age = body.age;
 
     connection.query('select * from userdata where id=?',[id],(err,data)=>{
+        console.log(data.length);
         if(data.length == 0){
             console.log('회원가입 성공');
             connection.query('insert into userdata(id, name, age, pw) values(?,?,?,?)',[
@@ -135,8 +140,7 @@ router.post('/register',(req,res)=>{
             res.redirect('/');
         }else{
             console.log('회원가입 실패');
-            res.send('<script>alert("회원가입 실패");</script>')
-            res.redirect('/new_register');
+            res.send("<script>alert('There are overlapping IDs.');  location.href='/register';</script>");
         }
     });
 });
