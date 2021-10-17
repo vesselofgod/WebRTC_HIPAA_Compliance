@@ -155,8 +155,14 @@ router.get('/logout',(req,res)=>{
 });
 
 router.get('/show',(req,res)=>{
-    console.log('화상상담');
-    res.render('index');
+    if(req.session.is_logined  == true){
+        console.log('화상상담');
+        res.render('index');
+    }else{
+        console.log('로그인이 필요합니다.');
+        res.send("<script>alert('Service that requires login.');  location.href='/login';</script>");
+    }
+
 });
 
 
