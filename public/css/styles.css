@@ -135,7 +135,8 @@ body {
 	}
 	
 	.local_div
-	{		
+	{	
+		/*포지션 수정해야 함.*/
 		width: 220px;
 		display: block;
 		position:absolute;

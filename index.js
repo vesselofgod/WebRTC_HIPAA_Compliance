@@ -84,7 +84,9 @@ io.sockets.on('connection', function(socket) {
 		socket.join(room);
 		socket.emit('joined', room, socket.id);
 		io.sockets.in(room).emit('ready');
-	  } else { // max two clients
+	  } else { 
+		// max two clients
+		//추후 1:N 채팅구현시 변경
 		socket.emit('full', room);
 	  }
 	});
