@@ -174,18 +174,39 @@ router.get('/show',(req,res)=>{
 
 router.get('/mypage',(req,res)=>{
     console.log('마이페이지');
-    res.render('mypage');
+    req.session.save(function(){ // 세션 스토어에 적용하는 작업
+        res.render('mypage',{ // 정보전달
+            name : req.session.name,
+            ID : req.session.ID,
+            age : req.session.age,
+            is_logined : true
+        });
+    });
 });
 
 
 router.get('/charts',(req,res)=>{
     console.log('차트');
-    res.render('charts');
+    req.session.save(function(){ // 세션 스토어에 적용하는 작업
+        res.render('charts',{ // 정보전달
+            name : req.session.name,
+            ID : req.session.ID,
+            age : req.session.age,
+            is_logined : true
+        });
+    });
 });
 
 router.get('/tables',(req,res)=>{
-    console.log('테이블');
-    res.render('tables');
+    console.log('테이블');    
+    req.session.save(function(){ // 세션 스토어에 적용하는 작업
+        res.render('tables',{ // 정보전달
+            name : req.session.name,
+            ID : req.session.ID,
+            age : req.session.age,
+            is_logined : true
+        });
+    });
 });
 
 
