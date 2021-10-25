@@ -172,5 +172,21 @@ router.get('/show',(req,res)=>{
 
 });
 
+router.get('/mypage',(req,res)=>{
+    console.log('마이페이지');
+    res.render('mypage');
+});
+
+
+router.get('/charts',(req,res)=>{
+    console.log('차트');
+    res.render('charts');
+});
+
+router.get('/tables',(req,res)=>{
+    console.log('테이블');
+    res.render('tables');
+});
+
 
 module.exports=router
