@@ -39,18 +39,21 @@ router.get('/',(req,res)=>{
     if(req.session.is_logined  == true){
         res.render('main',{
             is_logined  : req.session.is_logined ,
-            name : req.session.name
+            name : req.session.name,
+            ID : req.session.ID
         });
     }else{
         res.render('main',{
             is_logined  : false
         });
-    }
-    console.log('login상태:',req.session.is_logined);
+    }/*
+    console.log('이름:', req.session.name);
+    console.log('ID:', req.session.ID);
+    console.log('login상태:',req.session.is_logined);*/
 });
 
 router.get('/login',(req,res)=>{
-    console.log('로그인 작동');
+    console.log('로그인');
     res.render('new_login');
 });
 
@@ -79,13 +82,17 @@ router.post('/login',(req,res)=>{
                 console.log('로그인 성공');
                 // 세션에 추가
                 req.session.is_logined  = true;
-                req.session.name = data.name;
-                req.session.id = data.id;
-                req.session.pw = data.pw;
+                req.session.name = data[0].name;
+                req.session.ID = data[0].id;
+                req.session.pw = data[0].pw;
+                /*
+                console.log('session id:',data[0].id);
+                console.log('session name:',data[0].name);
+                console.log('session pw:',data[0].pw);*/
                 req.session.save(function(){ // 세션 스토어에 적용하는 작업
                     res.render('main',{ // 정보전달
                         name : data[0].name,
-                        id : data[0].id,
+                        ID : data[0].id,
                         age : data[0].age,
                         is_logined : true
                     });
@@ -96,7 +103,7 @@ router.post('/login',(req,res)=>{
                 console.log('비밀번호가 틀립니다.');
                 req.session.save(function(){ // 세션 스토어에 적용하는 작업
                     /*res.render('login',{ // 정보전달*/
-                        is_logined : false
+                    is_logined : false
                     /*});*/
                     res.send("<script>alert('ID or password is wrong..');  location.href='/login';</script>");
                 });
