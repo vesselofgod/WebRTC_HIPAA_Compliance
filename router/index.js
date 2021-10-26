@@ -164,7 +164,14 @@ router.get('/logout',(req,res)=>{
 router.get('/show',(req,res)=>{
     if(req.session.is_logined  == true){
         console.log('화상상담');
-        res.render('index');
+        req.session.save(function(){ // 세션 스토어에 적용하는 작업
+            res.render('index',{ // 정보전달
+                name : req.session.name,
+                ID : req.session.ID,
+                age : req.session.age,
+                is_logined : true
+            });
+        });
     }else{
         console.log('로그인이 필요합니다.');
         res.send("<script>alert('Service that requires login.');  location.href='/login';</script>");
