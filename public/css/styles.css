@@ -303,7 +303,7 @@ body {
 
 
 /*------------------------------------
-  Messages
+  Messages 채팅창
 ------------------------------------*/
 .unread {
 	cursor: pointer;
@@ -311,6 +311,7 @@ body {
   }
   
   .messages-box {
+	height: 37rem;
 	max-height: 37rem;
 	overflow: auto;
   }

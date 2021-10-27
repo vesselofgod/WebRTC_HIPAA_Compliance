@@ -33,6 +33,8 @@ var options = {
 var sessionStore = new MySQLStore(options)
 connection.connect()
 
+
+
 router.get('/',(req,res)=>{
     console.log('메인페이지 작동');
     console.log(req.session);
@@ -46,10 +48,7 @@ router.get('/',(req,res)=>{
         res.render('main',{
             is_logined  : false
         });
-    }/*
-    console.log('이름:', req.session.name);
-    console.log('ID:', req.session.ID);
-    console.log('login상태:',req.session.is_logined);*/
+    }
 });
 
 router.get('/login',(req,res)=>{
