@@ -58,7 +58,31 @@ io.sockets.on('connection', function(socket) {
 	  socket.emit('log', array);
 	}
   
-    
+  	// 새로운 유저가 접속했을 경우 다른 소켓에게도 알려줌 
+	socket.on('newUser', function(name) {
+		console.log(name + ' 님이 접속하였습니다.')
+
+
+		socket.name = name
+
+		// 모든 소켓에게 전송
+		io.sockets.emit('update', {type: 'connect', name: 'SERVER', message: name + '님이 접속하였습니다.'})
+	})
+
+	// 전송한 메시지 받기 
+	socket.on('chat message', function(data) {
+		// 받은 데이터에 누가 보냈는지 이름을 추가
+		//data.name = socket.name
+		
+		console.log(data.message)
+
+		// 보낸 사람을 제외한 나머지 유저에게 메시지 전송
+		socket.broadcast.emit('update', data);
+	})
+
+
+
+
     //Defining Socket Connections
     socket.on('message', function(message, room) {
 	  log('Client said: ', message);

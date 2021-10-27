@@ -1,4 +1,5 @@
 // message js
+/*
 $('#send-message').on('submit', function (event) {
     event.preventDefault();
     var message = $('.messages-me').last().clone();
@@ -6,4 +7,4 @@ $('#send-message').on('submit', function (event) {
     $('#input-me').val('');
     message.appendTo('.messages-list');
     message.find('.minutes').text("0");
-});
+});*/
