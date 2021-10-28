@@ -61,7 +61,7 @@ io.sockets.on('connection', function(socket) {
   	// 새로운 유저가 접속했을 경우 다른 소켓에게도 알려줌 
 	socket.on('newUser', function(name) {
 		console.log(name + ' 님이 접속하였습니다.')
-
+		
 
 		socket.name = name
 

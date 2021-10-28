@@ -204,15 +204,25 @@ router.get('/charts',(req,res)=>{
 });
 
 router.get('/tables',(req,res)=>{
-    console.log('테이블');    
-    req.session.save(function(){ // 세션 스토어에 적용하는 작업
-        res.render('tables',{ // 정보전달
-            name : req.session.name,
-            ID : req.session.ID,
-            age : req.session.age,
-            is_logined : true
+    console.log('테이블');
+    var page = req.params.page;
+    var sql = "select idx, userName, doctorName, reason,content, date_format(regdate,'%Y-%m-%d %H:%i:%s') regdate from consulting"
+
+    connection.query(sql, function (err, rows) {
+        if (err) console.error("err : " + err);
+        req.session.save(function(){ // 세션 스토어에 적용하는 작업
+            res.render('tables',{ // 정보전달
+                title: '게시판 리스트',
+                rows: rows,
+                name : req.session.name,
+                ID : req.session.ID,
+                age : req.session.age,
+                is_logined : true
+            });
         });
     });
+
+
 });
 
 
