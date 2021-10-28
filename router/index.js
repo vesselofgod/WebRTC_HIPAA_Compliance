@@ -206,9 +206,9 @@ router.get('/charts',(req,res)=>{
 router.get('/tables',(req,res)=>{
     console.log('테이블');
     var page = req.params.page;
-    var sql = "select idx, userName, doctorName, reason,content, date_format(regdate,'%Y-%m-%d %H:%i:%s') regdate from consulting"
+    var sql = "select idx, userName, doctorName, reason,content, date_format(regdate,'%Y-%m-%d %H:%i:%s') regdate from consulting where userID=?"
 
-    connection.query(sql, function (err, rows) {
+    connection.query(sql,req.session.ID,function (err, rows) {
         if (err) console.error("err : " + err);
         req.session.save(function(){ // 세션 스토어에 적용하는 작업
             res.render('tables',{ // 정보전달
