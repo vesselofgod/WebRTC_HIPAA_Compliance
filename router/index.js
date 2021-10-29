@@ -243,5 +243,30 @@ var idx = req.params.idx;
     });
 });
 
+router.post('/update',function(req,res,next)
+{
+    var idx = req.body.idx;
+    var reason = req.body.reason;
+    var content = req.body.content;
+    var passwd = req.body.passwd;
+    var datas = [reason,content,idx,passwd];
+ 
+ 
+    var sql = "update consulting set reason=?, content=? where idx=? and passwd=?";
+    connection.query(sql,datas, function(err,result)
+    {
+        if(err) console.error(err);
+        if(result.affectedRows == 0)
+        {
+            res.send("<script>alert('패스워드가 일치하지 않습니다.');history.back();</script>");
+        }
+        else
+        {
+            res.redirect("/tables");
+        }
+    });
+});
+
+
 
 module.exports=router
