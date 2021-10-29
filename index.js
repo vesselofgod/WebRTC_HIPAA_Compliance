@@ -14,6 +14,8 @@ var session = require('express-session')
 var MySQLStore = require('express-mysql-session')(session)
 const router = require('./router/index')
 
+var ios = require("express-socket.io-session");
+
 var options = {
     host:'localhost',
     user:'root',
@@ -21,17 +23,16 @@ var options = {
     database:'user'
 }
 var sessionStore = new MySQLStore(options)
-
+var session = session({                                            
+	secret:"asdfasffdas",
+	resave:false,
+	saveUninitialized:true
+  });
 
 app.set('views','./views')
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended:false}));
-app.use(session({
-    secret: 'my key',
-    resave: false,
-    saveUninitialized:true,
-    store: sessionStore
-}))
+app.use(session)
 app.use(router)
 
 app.use(express.static('public'))
@@ -45,7 +46,10 @@ app.get("/", function(req, res){
 	res.render("index.ejs");
 });
 */
+
 var io = socketIO(server);
+//세션과 소켓 연결
+io.use(ios(session));
 
 io.sockets.on('connection', function(socket) {
 
@@ -60,21 +64,16 @@ io.sockets.on('connection', function(socket) {
   
   	// 새로운 유저가 접속했을 경우 다른 소켓에게도 알려줌 
 	socket.on('newUser', function(name) {
-		console.log(name + ' 님이 접속하였습니다.')
-		
-
-		socket.name = name
-
-		// 모든 소켓에게 전송
-		io.sockets.emit('update', {type: 'connect', name: 'SERVER', message: name + '님이 접속하였습니다.'})
+		socket.otherName = socket.handshake.session.ID; ;
+		io.sockets.emit('update', {type: 'connect', name: 'SERVER', message: socket.otherName+'님이 접속하였습니다.'})
 	})
 
 	// 전송한 메시지 받기 
 	socket.on('chat message', function(data) {
 		// 받은 데이터에 누가 보냈는지 이름을 추가
-		//data.name = socket.name
+		data.otherName = socket.otherName;
 		
-		console.log(data.message)
+		console.log(data.otherName+":"+data.message);
 
 		// 보낸 사람을 제외한 나머지 유저에게 메시지 전송
 		socket.broadcast.emit('update', data);

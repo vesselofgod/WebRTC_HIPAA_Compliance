@@ -37,6 +37,8 @@ if (room !== '') {
 socket.on('connect', function() {
   //이름 입력(추후 제작)
   //이름이 빈칸인 경우 
+  var userName;
+  console.log(userName);
   if(!userName) {
     userName = '익명';
   }
@@ -48,6 +50,7 @@ socket.on('connect', function() {
 socket.on('update', function(data) {
 
   var message = $('.messages-you').last().clone();
+  message.find('strong').text(data.otherName);
   message.find('p').text(data.message);
   //$('#input-me').val('');
   message.appendTo('.messages-list');
