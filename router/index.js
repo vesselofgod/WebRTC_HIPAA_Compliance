@@ -221,8 +221,26 @@ router.get('/tables',(req,res)=>{
             });
         });
     });
+});
 
-
+router.get('/update/:idx',function(req,res,next)
+{
+var idx = req.params.idx;
+    var sql = "select idx, userName, doctorName, reason, content, date_format(regdate,'%Y-%m-%d %H:%i:%s') regdate from consulting where idx=?";
+    connection.query(sql,[idx], function(err,row)
+    {
+        if(err) console.error(err);
+        req.session.save(function(){
+            res.render('update', {
+                title:"글 상세", 
+                rows: row[0],
+                name : req.session.name,
+                ID : req.session.ID,
+                age : req.session.age,
+                is_logined : true
+            });
+        });
+    });
 });
 
 

@@ -94,6 +94,7 @@
                                             <th>사유</th>
                                             <th>상담내용</th>
                                             <th>상담일자</th>
+                                            <th>수정</th>
                                         </tr>
                                     </thead>
 
@@ -106,6 +107,7 @@
                                             <th>사유</th>
                                             <th>상담내용</th>
                                             <th>상담일자</th>
+                                            <th>수정</th>
                                         </tr>
                                     </tfoot>
                                         <%
@@ -119,32 +121,9 @@
                                                 <td><%=rows[i].reason%></td>
                                                 <td><%=rows[i].content%></td>
                                                 <td><%=rows[i].regdate%></td>
+                                                <td><a href="/update/<%=rows[i].idx%>">수정</a></td>
                                             </tr>
                                         <%}%>
-                                        <tr>
-                                            <td>Shad Decker</td>
-                                            <td>Regional Director</td>
-                                            <td>Edinburgh</td>
-                                            <td>51</td>
-                                            <td>2008/11/13</td>
-                                            <td>$183,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Michael Bruce</td>
-                                            <td>Javascript Developer</td>
-                                            <td>Singapore</td>
-                                            <td>29</td>
-                                            <td>2011/06/27</td>
-                                            <td>$183,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Donna Snider</td>
-                                            <td>Customer Support</td>
-                                            <td>New York</td>
-                                            <td>27</td>
-                                            <td>2011/01/25</td>
-                                            <td>$112,000</td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
