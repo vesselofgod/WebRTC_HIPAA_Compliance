@@ -49,7 +49,7 @@ app.get("/", function(req, res){
 
 var io = socketIO(server);
 //세션과 소켓 연결
-io.use(ios(session));
+io.use(ios(session,{ autoSave:true }));
 
 io.sockets.on('connection', function(socket) {
 

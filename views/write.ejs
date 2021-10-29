@@ -5,16 +5,20 @@
     <link rel='stylesheet' href='/stylesheets/style.css'/>
 </head>
 <body>
-<h1>title</h1>
-<form action="/board/write" method="post">
+<h1>상담 기록 작성</h1>
+<form action="/write" method="post">
     <table border="1">
         <tr>
-            <td>작성자</td>
-            <td><input type="text" name="name" id="name" required/></td>
+            <td>의사</td>
+            <td><input type="text" name="doctorID" id="doctorID" required/></td>
         </tr>
         <tr>
-            <td>제목</td>
-            <td><input type="text" name="title" id="title" required/></td>
+            <td>환자</td>
+            <td><input type="text" name="userID" id="userID" required/></td>
+        </tr>
+        <tr>
+            <td>상담사유</td>
+            <td><input type="text" name="reason" id="reason" required/></td>
         </tr>
         <tr>
             <td>내용</td>
