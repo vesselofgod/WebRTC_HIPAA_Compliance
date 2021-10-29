@@ -180,12 +180,19 @@ router.get('/show',(req,res)=>{
 
 router.get('/mypage',(req,res)=>{
     console.log('마이페이지');
-    req.session.save(function(){ // 세션 스토어에 적용하는 작업
-        res.render('mypage',{ // 정보전달
-            name : req.session.name,
-            ID : req.session.ID,
-            age : req.session.age,
-            is_logined : true
+    var sql = "select idx, userName, doctorName, reason,content, date_format(regdate,'%Y-%m-%d %H:%i:%s') regdate from consulting where userID=?"
+
+    connection.query(sql,req.session.ID,function (err, rows) {
+        if (err) console.error("err : " + err);
+        req.session.save(function(){ // 세션 스토어에 적용하는 작업
+            res.render('mypage',{ // 정보전달
+                title: '게시판 리스트',
+                rows: rows,
+                name : req.session.name,
+                ID : req.session.ID,
+                age : req.session.age,
+                is_logined : true
+            });
         });
     });
 });
@@ -250,7 +257,6 @@ router.post('/update',function(req,res,next)
     var content = req.body.content;
     var passwd = req.body.passwd;
     var datas = [reason,content,idx,passwd];
- 
  
     var sql = "update consulting set reason=?, content=? where idx=? and passwd=?";
     connection.query(sql,datas, function(err,result)
