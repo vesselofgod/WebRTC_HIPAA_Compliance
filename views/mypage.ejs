@@ -10,6 +10,8 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/mypage_styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+        
+
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" id="mainNav">
@@ -197,28 +199,66 @@
                         <div class="modal-content">
                             <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
                             <div class="container">
-                                <div class="row justify-content-center">
-                                    <div class="col-lg-8">
-                                        <div class="modal-body">
-                                            <!-- Project details-->
-                                            <h2 class="text-uppercase">Project Name</h2>
-                                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                            <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/6.jpg" alt="..." />
-                                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                            <ul class="list-inline">
-                                                <li>
-                                                    <strong>Client:</strong>
-                                                    Window
-                                                </li>
-                                                <li>
-                                                    <strong>Category:</strong>
-                                                    Photography
-                                                </li>
-                                            </ul>
-                                            <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                                <i class="fas fa-times me-1"></i>
-                                                Close Project
-                                            </button>
+                                <div class="row"><br>
+                                </div>
+                                <div class="row"><br><br>
+                                    <div class="col-sm-8 col-sm-offset-2">
+                                        <div class="loader">
+                                            <div class="col-xs-3 col-xs-offset-5">
+                                                <div id="loadbar" style="display: none;">
+                                                    <img src="https://8finatics.s3.amazonaws.com/static/reload_emi.gif" alt="Loading" class="center-block loanParamsLoader" style="">
+                                                </div>
+                                            </div>
+                            
+                                            <div id="quiz">
+                                            
+                                                <div class="question">
+                                                    <h3><span class="label label-warning" id="qid">1</span>
+                                                    <span id="question"> How can you add a single line comment in a JavaScript?</span>
+                                                    </h3>
+                                                </div>
+                                                <ul>
+                                                    <li>
+                                                    <input type="radio" id="f-option" name="selector" value="1">
+                                                    <label for="f-option" class="element-animation">/*-- comment --*/</label>
+                                                    <div class="check"></div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                    <input type="radio" id="s-option" name="selector" value="2">
+                                                    <label for="s-option" class="element-animation">comment //</label>
+                                                    <div class="check"><div class="inside"></div></div>
+                                                    </li>
+                                                    
+                                                    <li>
+                                                    <input type="radio" id="t-option" name="selector" value="3">
+                                                    <label for="t-option" class="element-animation">comment [ ]</label>
+                                                    <div class="check"><div class="inside"></div></div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="text-muted">
+                                            <span id="answer"></span>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-8 col-sm-offset-2">
+                                        <div id="result-of-question" class="pulse animated" style="display: none;">
+                                            <span id="totalCorrect" class="pull-right"></span>
+                                            <table class="table table-hover table-responsive" >
+                                                <thead>
+                                                    <tr>
+                                                        <th>Question No.</th>
+                                                        <th>Our answer</th>
+                                                        <th>Your answer</th>
+                                                        <th>Result</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="quizResult"></tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
@@ -235,5 +275,10 @@
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
+
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="js/quiz.js"></script>
     </body>
 </html>
