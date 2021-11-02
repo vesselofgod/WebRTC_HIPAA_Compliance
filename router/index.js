@@ -175,8 +175,20 @@ router.get('/show',(req,res)=>{
         console.log('로그인이 필요합니다.');
         res.send("<script>alert('Service that requires login.');  location.href='/login';</script>");
     }
-
 });
+
+router.post( '/image', upload.single("image"), function(req, res, next) {
+    try {
+      console.log(req.file)
+  
+      var data = req.file;
+      res.send(data.location);
+  
+    } catch (error) {
+      console.error(error);
+      next(error);
+    }
+  });
 
 router.get('/mypage',(req,res)=>{
     console.log('마이페이지');

@@ -5,6 +5,8 @@ var os = require('os');
 var express = require('express');
 var app = express();
 var http = require('http');
+var fs = require('fs');
+
 //For signalling in WebRTC
 var socketIO = require('socket.io');
 
@@ -113,6 +115,13 @@ io.sockets.on('connection', function(socket) {
 		socket.emit('full', room);
 	  }
 	});
+
+	socket.on('image', (data)=>{
+		//이거 room 지속되는지 확인해봐야 함.
+		io.sockets.in(room).emit('image', data); 
+		console.log(data); 
+	});
+
   
 	socket.on('ipaddr', function() {
 	  var ifaces = os.networkInterfaces();
