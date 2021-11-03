@@ -23,10 +23,12 @@
     <header class="footer py-4" style="background-color: #212529;">
         <div class="container" >
             <div class="row align-items-center" >
-                <div class="col-lg-2 text-lg-start">
-                    <a class="btn btn-primary btn-social mx-2" href="/"><i class="fas fa-home"></i> 홈으로</a>
+                <div class="col-lg-3 text-lg-start">
+                    <a class="btn btn-primary btn-social mx-2" href="/"><i class="fas fa-home"></i></a>
+                    <button class="btn btn-primary" type="button" id="Mic"><i class="fas fa-microphone-alt"></i></button>
+                    <button class="btn btn-primary" type="button" id="Cam"><i class="fas fa-video"></i></button>
                 </div>
-                <div class="col-lg-8 my-3 my-lg-0">
+                <div class="col-lg-7 my-3 my-lg-0">
                     <a class="btn btn-primary btn-social mx-2" href="#!"><i class="fas fa-podcast"></i> LIVE Channels:</a>
                     <a class="live-consultings" href="/"><img class="mx-auto rounded-circle" src="assets/img/team/3.jpg" alt="..." /></a>
                     <a class="live-consultings" href="/"><img class="mx-auto rounded-circle" src="assets/img/team/2.jpg" alt="..." /></a>
@@ -57,13 +59,13 @@
                             <div class="input-group">
                                 <input id="input-me" type="text" name="messages" class="form-control input-sm" placeholder="Type your message here..." />
                                 <span class="input-group-append">
-                                    <button class="btn btn-primary" type="submit">Send</button>
+                                    <button class="btn btn-primary" type="submit"><i class="fas fa-paper-plane"></i></button>
                                 </span>
                             </div>
                         </form>
                         <form id="uploadForm" method="post" enctype="multipart/form-data">
                             <input type="file" name="test" id="test"/>
-                            <button class="btn btn-primary" type="button" id="uploadBtn">File</button>
+                            <button class="btn btn-primary" type="button" id="uploadBtn"><i class="fas fa-share-square"></i></button>
                         </form>
                     </div>
                 </div>

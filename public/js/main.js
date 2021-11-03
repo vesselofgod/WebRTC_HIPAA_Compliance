@@ -67,7 +67,7 @@ socket.on('imageupdate', function (data) {
   output+='</span>'
   output+=' <div class="message-body clearfix">'
   output+= '<div class="message-header">'
-  output+= '<strong class="messages-title" id="otherUser">'+'server'+'</strong>'
+  output+= '<strong class="messages-title" id="otherUser">'+data.otherName+'</strong>'
   output+= '</div>'
   output += '<li>'
   output+= '<img src =' + data.message + ' height = 200px width = 200px>'
@@ -90,9 +90,9 @@ socket.on('image', function (data) {
   output+='</span>'
   output+=' <div class="message-body clearfix">'
   output+= '<div class="message-header">'
-  output+= '<strong class="messages-title" id="otherUser">server</strong>'
+  output+= '<strong class="messages-title" id="otherUser"><%= name %></strong>'
   output+= '</div>'
-  output += '<li>'
+  output += '<li style="margin-left: 160px">'
   output+= '<img src =' + data.message + ' height = 200px width = 200px>'
   output += '</li>'
   output+= '</div>'
@@ -116,11 +116,14 @@ $('#send-message').on('submit', function (event) {
   socket.emit('chat message', {type: 'chat message', message: textvalue})
 });
 
+
 $(function(){
   $('#uploadBtn').on('click', function(){
     uploadFile();
   });
 });
+
+
 
 function uploadFile(){
   var form = $('#uploadForm')[0];
@@ -143,7 +146,7 @@ function uploadFile(){
         message: data,
         date: new Date().toUTCString()
       });
-      alert("complete");
+      //alert("complete");
       $("#btnSubmit").prop("disabled", false);
     },
     error: function (e) {
@@ -223,11 +226,23 @@ function sendMessage(message, room) {
 var localVideo = document.querySelector('#localVideo');
 var remoteVideo = document.querySelector('#remoteVideo');
 console.log("Going to find Local media");
-navigator.mediaDevices.getUserMedia(localStreamConstraints)
+const Stream= navigator.mediaDevices.getUserMedia(localStreamConstraints)
 .then(gotStream)
 .catch(function(e) {
   alert('getUserMedia() error: ' + e.name);
 });
+
+
+$(function(){
+  $('#Mic').on('click', function(){
+    localStream.getAudioTracks()[0].stop();
+
+  });
+  $('#Cam').on('click', function(){
+    localStream.getVideoTracks()[0].stop();
+  });
+});
+
 
 //If found local stream
 function gotStream(stream) {
