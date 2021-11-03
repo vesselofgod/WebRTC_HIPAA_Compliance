@@ -58,6 +58,51 @@ socket.on('update', function(data) {
 
 })
 
+socket.on('imageupdate', function (data) {
+  //이미지 전송
+  var output = '';
+  output+='<li class="messages-you clearfix">'
+  output+='<span class="message-img img-circle">'
+  output+='<img src="https://demo.bootstrap.news/bootnews/assets/img/avatar/avatar2.png" alt="User Avatar" class="avatar-sm border rounded-circle">'
+  output+='</span>'
+  output+=' <div class="message-body clearfix">'
+  output+= '<div class="message-header">'
+  output+= '<strong class="messages-title" id="otherUser">'+'server'+'</strong>'
+  output+= '</div>'
+  output += '<li>'
+  output+= '<img src =' + data.message + ' height = 200px width = 200px>'
+  output += '</li>'
+  output+= '</div>'
+  output += '</li>';
+  // 이때 이미지가 깨지는 이유: 127.0.0.1:52273 + data.message로 접속된다.
+  // s3를 사용해서 s3주소를 날라오게 하면 가능하다. 
+  
+  $(output).appendTo('.messages-list');
+  //$('.messages-list').listview('refresh');
+});
+
+socket.on('image', function (data) {
+  //이미지 전송
+  var output = '';
+  output+='<li class="messages-me clearfix">'
+  output+='<span class="message-img">'
+  output+='<img src="https://demo.bootstrap.news/bootnews/assets/img/avatar/avatar1.png" alt="User Avatar" class="avatar-sm border rounded-circle">'
+  output+='</span>'
+  output+=' <div class="message-body clearfix">'
+  output+= '<div class="message-header">'
+  output+= '<strong class="messages-title" id="otherUser">server</strong>'
+  output+= '</div>'
+  output += '<li>'
+  output+= '<img src =' + data.message + ' height = 200px width = 200px>'
+  output += '</li>'
+  output+= '</div>'
+  output += '</li>';
+  
+  $(output).appendTo('.messages-list');
+  //$('.messages-list').listview('refresh');
+});
+
+
 
 $('#send-message').on('submit', function (event) {
   //send 버튼을 눌렀을 때 이벤트 발생해서 자동실행되는 함수
@@ -110,25 +155,8 @@ function uploadFile(){
     callback(data);
   });
   $.submit();
+
 }
-
-
-
-socket.on('image', function (data) {
-  //이미지 전송
-  var output = '';
-  output += '<li>';
-  output += '    <img src =' + data.message + ' height = 200px width = 200px>';
-  // 이때 이미지가 깨지는 이유: 127.0.0.1:52273 + data.message로 접속된다.
-  // s3를 사용해서 s3주소를 날라오게 하면 가능하다. 
-
-  output += '    <p>' + data.date + '</p>';
-  output += '</li>';
- 
-  // 객체 추가
-  $(output).appendTo('.messages-list');
-  $('.messages-list').listview('refresh');
-});
 
 
 //Defining socket connections for signalling

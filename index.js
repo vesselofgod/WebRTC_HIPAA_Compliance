@@ -81,6 +81,14 @@ io.sockets.on('connection', function(socket) {
 		socket.broadcast.emit('update', data);
 	})
 
+	socket.on('image', (data)=>{
+		//이거 room 지속되는지 확인해봐야 함.
+		console.log(data);
+		//room별로 구별해서 채팅 보내기
+		//io.sockets.in(room).emit('image', data); 
+		socket.broadcast.emit('imageupdate', data);
+		socket.emit('image', data);
+	});
 
 
 
@@ -114,12 +122,6 @@ io.sockets.on('connection', function(socket) {
 		//추후 1:N 채팅구현시 변경
 		socket.emit('full', room);
 	  }
-	});
-
-	socket.on('image', (data)=>{
-		//이거 room 지속되는지 확인해봐야 함.
-		io.sockets.in(room).emit('image', data); 
-		console.log(data); 
 	});
 
   
