@@ -8,6 +8,9 @@ var localStream;
 var pc;
 var remoteStream;
 var turnReady;
+var videoOn=true;
+var audioOn=true;
+
 
 //Initialize turn/stun server here
 var pcConfig = turnConfig;
@@ -234,12 +237,17 @@ const Stream= navigator.mediaDevices.getUserMedia(localStreamConstraints)
 
 
 $(function(){
-  $('#Mic').on('click', function(){
-    localStream.getAudioTracks()[0].stop();
-
+  $('#micOff').on('click', function(){
+    localStream.getAudioTracks()[0].enabled = false;
   });
-  $('#Cam').on('click', function(){
-    localStream.getVideoTracks()[0].stop();
+  $('#micOn').on('click', function(){
+    localStream.getAudioTracks()[0].enabled = true;
+  });
+  $('#camOff').on('click', function(){
+    localStream.getVideoTracks()[0].enabled = false;
+  });
+  $('#camOn').on('click', function(){
+    localStream.getVideoTracks()[0].enabled = true;
   });
 });
 
