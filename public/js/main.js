@@ -71,7 +71,64 @@ $('#send-message').on('submit', function (event) {
   socket.emit('chat message', {type: 'chat message', message: textvalue})
 });
 
+$(function(){
+  $('#uploadBtn').on('click', function(){
+    uploadFile();
+  });
+});
 
+function uploadFile(){
+  var form = $('#uploadForm')[0];
+  var formData = new FormData();
+  formData.append("image", $("input[name=test]")[0].files[0]);
+  var obj = {formData}
+  $.ajax({
+    url : '/image',
+    type : 'POST',
+    method: "POST",
+    timeout: 0,
+    processData: false,
+    mimeType: "multipart/form-data",
+    contentType: false,
+    data: formData,
+   
+    success: function (data) {
+      socket.emit('image', {
+        //name: $('#name').val(),
+        message: data,
+        date: new Date().toUTCString()
+      });
+      alert("complete");
+      $("#btnSubmit").prop("disabled", false);
+    },
+    error: function (e) {
+      //console.log("ERROR : ", e);
+      $("#btnSubmit").prop("disabled", false);
+      alert("fail");
+    }
+  }).done(function(data){
+    callback(data);
+  });
+  $.submit();
+}
+
+
+
+socket.on('image', function (data) {
+  //이미지 전송
+  var output = '';
+  output += '<li>';
+  output += '    <img src =' + data.message + ' height = 200px width = 200px>';
+  // 이때 이미지가 깨지는 이유: 127.0.0.1:52273 + data.message로 접속된다.
+  // s3를 사용해서 s3주소를 날라오게 하면 가능하다. 
+
+  output += '    <p>' + data.date + '</p>';
+  output += '</li>';
+ 
+  // 객체 추가
+  $(output).appendTo('.messages-list');
+  $('.messages-list').listview('refresh');
+});
 
 
 //Defining socket connections for signalling

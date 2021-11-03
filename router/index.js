@@ -5,6 +5,7 @@ const mysql=require('mysql')
 const bodyParser = require('body-parser')
 var session = require('express-session')
 var MySQLStore = require('express-mysql-session')(session)
+const upload = require('../config/multer')
 
 app.set('views','./views')
 app.set('view engine', 'ejs')
@@ -177,18 +178,19 @@ router.get('/show',(req,res)=>{
     }
 });
 
-router.post( '/image', upload.single("image"), function(req, res, next) {
+router.post('/image', upload.single("image"), function(req, res, next) {
     try {
-      console.log(req.file)
-  
-      var data = req.file;
-      res.send(data.location);
+        console.log(req.file);
+    
+        var data = req.file;
+        res.send(data.location);
   
     } catch (error) {
-      console.error(error);
-      next(error);
+        //console.log(error);
+        console.error(error);
+        next(error);
     }
-  });
+});
 
 router.get('/mypage',(req,res)=>{
     console.log('마이페이지');

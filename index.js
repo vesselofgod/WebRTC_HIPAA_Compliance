@@ -5,7 +5,6 @@ var os = require('os');
 var express = require('express');
 var app = express();
 var http = require('http');
-var fs = require('fs');
 
 //For signalling in WebRTC
 var socketIO = require('socket.io');
@@ -15,6 +14,7 @@ const bodyParser = require('body-parser')
 var session = require('express-session')
 var MySQLStore = require('express-mysql-session')(session)
 const router = require('./router/index')
+const upload = require('./config/multer');
 
 var ios = require("express-socket.io-session");
 
