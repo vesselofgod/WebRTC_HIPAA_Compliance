@@ -84,6 +84,7 @@ io.sockets.on('connection', function(socket) {
 	socket.on('image', (data)=>{
 		//이거 room 지속되는지 확인해봐야 함.
 		console.log(data);
+		data.otherName = socket.otherName;
 		//room별로 구별해서 채팅 보내기
 		//io.sockets.in(room).emit('image', data); 
 		socket.broadcast.emit('imageupdate', data);

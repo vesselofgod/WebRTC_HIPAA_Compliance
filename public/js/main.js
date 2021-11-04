@@ -93,7 +93,7 @@ socket.on('image', function (data) {
   output+='</span>'
   output+=' <div class="message-body clearfix">'
   output+= '<div class="message-header">'
-  output+= '<strong class="messages-title" id="otherUser"><%= name %></strong>'
+  output+= '<strong class="messages-title" id="otherUser">image</strong>'
   output+= '</div>'
   output += '<li style="margin-left: 160px">'
   output+= '<img src =' + data.message + ' height = 200px width = 200px>'
@@ -125,8 +125,6 @@ $(function(){
     uploadFile();
   });
 });
-
-
 
 function uploadFile(){
   var form = $('#uploadForm')[0];
@@ -161,7 +159,6 @@ function uploadFile(){
     callback(data);
   });
   $.submit();
-
 }
 
 
