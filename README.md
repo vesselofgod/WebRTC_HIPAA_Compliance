@@ -10,16 +10,33 @@
 
 
 ## 💡 핵심 기능
+화상상담 기능|
+:---: |
+![화상상담](https://user-images.githubusercontent.com/18081105/140267090-0663470a-4e8f-4cb9-a9ef-9e4efd21bbdc.png)
 
+메디로그의 가장 핵심기능인 **화상상담/채팅 기능** 이다. 기본적으로 원격의료상담에 있어 실시간으로 상담을 받을 수 있는 화상회의 기능을 WebRTC를 이용해서 설계하였다. 각 User는 로그인을 한 후 상담이 필요한 분야의 상담방에 들어가서 화상상담과 채팅을 이용하여 상담을 받을 수 있다. 그리고 상담 후에는 상담내역을 마이페이지에서 확인할 수 있도록 설계하였다.
 
+ - **[모든 기능 보기](https://github.com/vesselofgod/WebRTC_HIPAA_Compliance/wiki/Project-Design)**
 
  
 ## ✅ 컴퓨터 구성 / 필수 조건 안내 (Prerequisites)
  - node.js install
-  
-  
-## ⚡️ 설치 안내 (Installation Process)
-- ```npm install```
+ -  ``` 
+    "dependencies": {
+    "aws-sdk": "^2.1019.0",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-mysql-session": "^2.1.7",
+    "express-session": "^1.17.2",
+    "express-socket.io-session": "^1.3.5",
+    "multer": "^1.4.3",
+    "multer-s3": "^2.10.0",
+    "mysql": "^2.18.1",
+    "socket.io": "^1.7.4"}
+## ⚡️ 설치/실행 안내 (Installation/Run Process)
+- ```npm install aws-sdk body-parser cookie-parser ejs express express-mysql-session express-session express-socket.io-session multer multer-s3 mysql socket.io --save```
 - ```node index.js```
 - open web browser and connect ```localhost:8000```
 
@@ -39,9 +56,9 @@ JavaScript | CSS | HTML
 
 
 - ### Back-end
-Node.js | WebRTC 
-:---: | :---: 
-![nodejs](https://user-images.githubusercontent.com/18081105/135970378-9d7cf78a-4fa6-41a3-87a9-1c675bb092c1.jpg) | ![webrtc](https://user-images.githubusercontent.com/18081105/135970746-c419bfd5-5fce-4d97-9194-c5ed8440fbf5.png)
+Node.js | WebRTC |socket.io
+:---: | :---: | :---: 
+![nodejs](https://user-images.githubusercontent.com/18081105/135970378-9d7cf78a-4fa6-41a3-87a9-1c675bb092c1.jpg) | ![webrtc](https://user-images.githubusercontent.com/18081105/135970746-c419bfd5-5fce-4d97-9194-c5ed8440fbf5.png) | ![socket io_icon-removebg-preview](https://user-images.githubusercontent.com/18081105/140266703-6500647c-e218-4177-af8d-4cd336c1eb29.png)
  
 ## 🔧 프로젝트 관리 (Project Management)
  - [개발 일정(Develop Schedule)](https://trello.com/b/JlaOjArx/live-telemidicine-service)
