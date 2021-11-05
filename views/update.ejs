@@ -1,43 +1,50 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>title</title>
-    <link rel='stylesheet' href='/stylesheets/style.css'/>
-</head>
-<body>
-<h1>title</h1>
+<link rel='stylesheet' href='/css/update.css'/>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <form action="/update" method="post">
-    <table border="1">
-        <input type="hidden" name="idx" value="<%=rows.idx%>"/>
-        <tr>
-            <td>의사</td>
-            <td><%=rows.doctorName%></td>
-        </tr>
-        <tr>
-            <td>상담사유</td>
-            <td><input type="text" name="reason" id="reason" value="<%=rows.reason%>" required/></td>
-        </tr>
-        <tr>
-            <td>내용</td>
-            <td><textarea name="content" id="content" cols="30" rows="10" required><%=rows.content%></textarea></td>
-        </tr>
-        <tr>
-            <td>패스워드</td>
-            <td><input type="password" name="passwd" id="passwd" required/></td>
-        </tr>
-
-        <tr>
-            <td>등록일</td>
-            <td><%=rows.regdate%></td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <button type="submit">글 수정</button>
-                <a href="/tables">목록</a>
-            </td>
-        </tr>
-    </table>
+    <div class="container contact">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="contact-info">
+                    <input type="hidden" name="idx" value="<%=rows.idx%>"/>
+                    <h2>상담의사:</h2>
+                    <h4><%=rows.doctorName%></h4>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="contact-form">
+                    <div class="form-group">
+                    <label class="control-label col-sm-2" for="fname">상담 사유:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="reason"name="reason" value="<%=rows.reason%>">
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <label class="control-label col-sm-2" for="comment">내용:</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" rows="5" id="content", name="content"><%=rows.content%></textarea>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <label class="control-label col-sm-2" for="passwd">비밀번호:</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="passwd" name="passwd">
+                    </div>
+                    </div>
+                    <div class="form-group">        
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">글 수정</button>
+                        <button class="btn btn-default"><a href="/tables">목록</a></button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </form>
-</body>
-</html>
+<!-- <form action="/update" method="post">
+
+</form> -->
  

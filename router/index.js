@@ -258,7 +258,8 @@ var idx = req.params.idx;
                 name : req.session.name,
                 ID : req.session.ID,
                 age : req.session.age,
-                is_logined : true
+                is_logined : true,
+                idx : req.params.idx
             });
         });
     });
@@ -271,7 +272,8 @@ router.post('/update',function(req,res,next)
     var content = req.body.content;
     var passwd = req.body.passwd;
     var datas = [reason,content,idx,passwd];
- 
+    console.log(datas)
+    //지금 인덱스 받아오게끔 만들어야 함.
     var sql = "update consulting set reason=?, content=? where idx=? and passwd=?";
     connection.query(sql,datas, function(err,result)
     {
