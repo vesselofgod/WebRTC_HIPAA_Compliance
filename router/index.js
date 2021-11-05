@@ -300,9 +300,25 @@ router.post('/write', function(req,res,next){
     var content = req.body.content;
     var passwd = req.body.passwd;
     var datas = [userID,doctorID,userID,doctorID,reason,content,passwd];
-    console.error(userID,doctorID,userID,doctorID,reason,content,passwd);
-    //중요: 여기서 이름하고 ID 받아오는 방법 생각해야 함.
-    var sql = "insert into consulting(userID, doctorID,userName,doctorName, reason, content, regdate, passwd,hit) values(?,?,?,?,?,?,now(),?,0)";
+    /*
+    var doctorsql = "select name from userdata where id=?;";
+    connection.query(doctorsql,doctorID, function (err, rows) {
+        if (err) console.error("err : " + err);
+        console.log(rows[0].name);
+        datas.splice(2, 0, rows[0].name);
+        console.log(datas);
+    });
+    var usersql = "select name from userdata where id=?;";
+    connection.query(usersql,userID, function (err, rows) {
+        if (err) console.error("err : " + err);
+        console.log(rows[0].name);
+        datas.splice(2, 0, rows[0].name);
+        console.log(datas);
+    });*/
+
+    console.log(datas);
+    //중요: 여기서 이름하고 ID 받아오는; 방법 생각해야 함.
+    var sql = "insert into consulting(userID, doctorID,userName,doctorName, reason, content, regdate, passwd,hit) values(?,?,?,?,?,?,now(),?,0);";
     connection.query(sql,datas, function (err, rows) {
         if (err) console.error("err : " + err);
         res.redirect('/tables');
