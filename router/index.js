@@ -246,7 +246,7 @@ router.get('/tables',(req,res)=>{
 
 router.get('/update/:idx',function(req,res,next)
 {
-var idx = req.params.idx;
+    var idx = req.params.idx;
     var sql = "select idx, userName, doctorName, reason, content, date_format(regdate,'%Y-%m-%d %H:%i:%s') regdate from consulting where idx=?";
     connection.query(sql,[idx], function(err,row)
     {
@@ -322,6 +322,48 @@ router.post('/write', function(req,res,next){
     connection.query(sql,datas, function (err, rows) {
         if (err) console.error("err : " + err);
         res.redirect('/tables');
+    });
+});
+
+router.get('/delete/:idx',function(req,res,next)
+{
+    var idx = req.params.idx;
+    var sql = "select idx, userName, doctorName, reason, content, date_format(regdate,'%Y-%m-%d %H:%i:%s') regdate from consulting where idx=?";
+    connection.query(sql,[idx], function(err,row)
+    {
+        if(err) console.error(err);
+        req.session.save(function(){
+            res.render('delete', {
+                rows: row[0],
+                name : req.session.name,
+                ID : req.session.ID,
+                age : req.session.age,
+                is_logined : true,
+                idx : req.params.idx
+            });
+        });
+    });
+});
+
+
+router.post('/delete',function(req,res,next)
+{
+    var idx = req.body.idx;
+    var passwd = req.body.passwd;
+    var datas = [idx,passwd];
+
+    var sql = "delete from consulting where idx=? and passwd=?";
+    connection.query(sql,datas, function(err,result)
+    {
+        if(err) console.error(err);
+        if(result.affectedRows == 0)
+        {
+            res.send("<script>alert('패스워드가 일치하지 않습니다.');history.back();</script>");
+        }
+        else
+        {
+            res.redirect('/tables');
+        }
     });
 });
 

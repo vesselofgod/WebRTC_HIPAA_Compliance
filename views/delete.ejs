@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+    <title>상담내역 삭제</title>
+    <link rel='stylesheet' href='/css/update.css'/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<form action="/delete" method="post">
+    <div class="container contact">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="contact-info">
+                    <input type="hidden" name="idx" value="<%=rows.idx%>"/>
+                    <h2>상담의사:</h2>
+                    <h4><%=rows.doctorName%></h4>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="contact-form">
+<!--                     <div class="form-group">
+                        <label class="control-label col-sm-2" for="fname">상담 사유:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="reason"name="reason" value="<%=rows.reason%>">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="comment">내용:</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" rows="5" id="content", name="content"><%=rows.content%></textarea>
+                        </div>
+                    </div> -->
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="passwd">비밀번호:</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="passwd" name="passwd">
+                        </div>
+                    </div>
+                    <div class="form-group">        
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">글 삭제</button>
+                            <button class="btn btn-default"><a href="/tables">목록</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- <form action="/update" method="post">
+
+</form> -->
+ 
