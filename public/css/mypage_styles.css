@@ -11950,7 +11950,7 @@ cursor: pointer;
 }
 
 ul li:hover label{
-  color: #FFFFFF;
+  color: navy;
 }
 
 ul li .check{
@@ -11968,7 +11968,7 @@ left: 20px;
 }
 
 ul li:hover .check {
-border: 5px solid #FFFFFF;
+border: 5px solid #000080;
 }
 
 ul li .check::before {
