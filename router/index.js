@@ -367,5 +367,37 @@ router.post('/delete',function(req,res,next)
     });
 });
 
+router.get('/media',(req,res)=>{
+    console.log('교육영상');
+    req.session.save(function(){ 
+        res.render('edumedia',{
+            name : req.session.name,
+            ID : req.session.ID,
+            is_logined : true
+        });
+    });
+});
+
+router.get('/addmedia',(req,res)=>{
+    console.log('교육영상 추가');
+    req.session.save(function(){
+        res.render('add-media',{
+            name : req.session.name,
+            ID : req.session.ID,
+            is_logined : true
+        });
+    });
+});
+
+router.get('/mediapage',(req,res)=>{
+    console.log('교육영상');
+    req.session.save(function(){
+        res.render('media-page',{
+            name : req.session.name,
+            ID : req.session.ID,
+            is_logined : true
+        });
+    });
+});
 
 module.exports=router
