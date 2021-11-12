@@ -1,0 +1,78 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+  <div class="card-body">
+    <button style="height:40px; margin:0px 0px 10px 0px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#adduser" ><i class="fas fa-plus"></i>│미션 등록하기 </button>
+    <!--<button style="height:40px; margin:0px 0px 10px 0px;" type="button" class="btn btn-warning" ><img src="img/logo/black-print.png" style="height:20px;" >│Print</button>-->
+    
+    <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">오늘의 미션</th>
+      <th scope="col">세부조건</th>
+      <th scope="col">달성 여부</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>식후 30분 약 복용</td>
+      <td></td>
+      <td><button style="height:40px;" type="button" class="btn btn-danger"><i class="fas fa-check"></i></button></td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>조깅</td>
+      <td>하루 30분</td>
+      <td><button style="height:40px;" type="button" class="btn btn-danger"><i class="fas fa-check"></i></button></td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>식단조절</td>
+      <td>나트륨 2000mg 이하 섭취</td>
+      <td><button style="height:40px;" type="button" class="btn btn-danger"><i class="fas fa-check"></i></button> </td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+<!--Modal-->
+   <div class="modal fade" id="adduser" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Add A Mission</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <div class="row">
+          <div class="input-group input-group-sm mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">User Name</span>
+          </div>
+          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+        </div>
+        <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm"> User Mission</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+      </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#error">Save a  changes</button>
+        </div>
+      </div>
+    </div>
+  </div> 
+	
+
+
