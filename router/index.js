@@ -400,4 +400,15 @@ router.get('/mediapage',(req,res)=>{
     });
 });
 
+router.get('/missionpage',(req,res)=>{
+    console.log('교육영상');
+    req.session.save(function(){ 
+        res.render('missionList',{
+            name : req.session.name,
+            ID : req.session.ID,
+            is_logined : true
+        });
+    });
+});
+
 module.exports=router
