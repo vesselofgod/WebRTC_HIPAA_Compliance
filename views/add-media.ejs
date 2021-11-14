@@ -30,6 +30,7 @@
 <!-- Header
 ================================================== -->
 <header>
+
 <div class="container">
 	<div class="sixteen columns">
 
@@ -37,10 +38,6 @@
 		<div id="logo">
 			<h7><a href="/"><img src="assets/img/medilogue-logo.svg" alt="Medilogue" style="width: 180px; height: 90;" /></a></h7>
 		</div>
-
-		<!-- Menu -->
-
-		<!-- Navigation -->
 
 	</div>
 </div>
@@ -63,81 +60,67 @@
 
 <!-- Content
 ================================================== -->
-<div class="container">
-	
-	<!-- Submit Page -->
-	<div class="sixteen columns">
-		<div class="submit-page">
+<form action="/addmedia" method="post">
+	<div class="container">
+		
+		<!-- Submit Page -->
+		<div class="sixteen columns">
+			<div class="submit-page">
 
-			<!-- Notice -->
-			<div class="notification notice closeable margin-bottom-40">
-				<p><span>Have an account?</span> If you don’t have an account you can create one below by entering your email address. A password will be automatically emailed to you.</p>
+				<!-- Notice -->
+				<div class="notification notice closeable margin-bottom-40">
+					<p><span>Have an account?</span> If you don’t have an account you can create one below by entering your email address. A password will be automatically emailed to you.</p>
+				</div>
+
+				<!-- Title -->
+				<div class="form">
+					<h5>영상 제목</h5>
+					<input class="search-field" type="text" placeholder="" value="" id="title" name="title" required/>
+				</div>
+
+				<!-- Location -->
+				<div class="form">
+					<h5>영상 등록자</h5>
+					<input class="search-field" type="text" placeholder="e.g. 세브란스 병원" value="" id="registrant" name="registrant" required/>
+				</div>
+
+				<!-- Job Type -->
+				<div class="form">
+					<h5>영상 종류</h5>
+					<select data-placeholder="Full-Time" class="chosen-select-no-single" id="category" name="category">
+						<option value="1">운동</option>
+						<option value="2">식습관 개선</option>
+						<option value="3">만성질환 관리</option>
+						<option value="4">기타</option>
+					</select>
+				</div
+
+				<!-- Tags -->
+				<div class="form">
+					<h5>도움이 될 사람들</h5>
+					<input class="search-field" type="text" placeholder="예시: 고혈압 환자, 당뇨 환자, 스트레스가 심한 분" value="" id="recommend" name="recommend" required/>
+					<p class="note">반드시 쉼표(,)로 구분해주세요.</p>
+				</div>
+
+				<!-- Description -->
+				<div class="form">
+					<h5>영상 설명</h5>
+					<textarea class="WYSIWYG"  cols="40" rows="3" id="content" name="content" spellcheck="true" required></textarea>
+				</div>
+
+				<div class="form">
+					<h5>영상 링크</h5>
+					<input type="text" placeholder="https://" id="link" name="link" required>
+				</div>
+
+				<div class="divider margin-top-0"></div>
+				<button class="button big margin-top-5" type="submit">영상 등록하기 <i class="fa fa-arrow-circle-right"></i></button>
+
 			</div>
-
-
-			<!-- Email -->
-
-			<!-- Title -->
-			<div class="form">
-				<h5>영상 제목</h5>
-				<input class="search-field" type="text" placeholder="" value=""/>
-			</div>
-
-			<!-- Location -->
-			<div class="form">
-				<h5>영상 출저 <span>(optional)</span></h5>
-				<input class="search-field" type="text" placeholder="e.g. 세브란스 병원" value=""/>
-			</div>
-
-			<!-- Job Type -->
-			<div class="form">
-				<h5>영상 종류</h5>
-				<select data-placeholder="Full-Time" class="chosen-select-no-single">
-					<option value="1">운동</option>
-					<option value="2">식습관 개선</option>
-					<option value="3">만성질환 관리</option>
-					<option value="4">기타</option>
-				</select>
-			</div
-
-			<!-- Tags -->
-			<div class="form">
-				<h5>영상 태그들 <span>(optional)</span></h5>
-				<input class="search-field" type="text" placeholder="예시: 고혈압, 당뇨, 심혈관질환..." value=""/>
-			</div>
-
-
-			<!-- Description -->
-			<div class="form">
-				<h5>영상 설명</h5>
-				<textarea class="WYSIWYG" name="summary" cols="40" rows="3" id="summary" spellcheck="true"></textarea>
-			</div>
-
-			<div class="form">
-				<h5>영상 링크</h5>
-				<input type="text" placeholder="https://">
-			</div>
-
-			<!-- Logo -->
-			<div class="form">
-				<h5>첨부파일 <span>(optional)</span></h5>
-				<label class="upload-btn">
-				    <input type="file" multiple />
-				    <i class="fa fa-upload"></i> 업로드
-				</label>
-				<span class="fake-input">파일이 선택되지 않았습니다.</span>
-			</div>
-
-
-			<div class="divider margin-top-0"></div>
-			<a href="#" class="button big margin-top-5">영상 등록하기 <i class="fa fa-arrow-circle-right"></i></a>
-
-
 		</div>
+
 	</div>
-
-</div>
-
+</form>
 
 <!-- Footer
 ================================================== -->

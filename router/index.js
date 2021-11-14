@@ -368,6 +368,24 @@ router.get('/addmedia',(req,res)=>{
     });
 });
 
+router.post('/addmedia', function(req,res,next){
+    var title = req.body.title;
+    var registrant = req.body.registrant;
+    var category = req.body.category;
+    var recommend = req.body.recommend;
+    var content = req.body.content;
+    var link = req.body.link;
+    var datas = [title,link,registrant,category,content,recommend];
+
+    console.log(datas);
+    //중요: 여기서 이름하고 ID 받아오는; 방법 생각해야 함.
+    var sql = "insert into eduboard(title, link, registrant, category, content, recommend , regdate) values(?,?,?,?,?,?,now());";
+    connection.query(sql,datas, function (err, rows) {
+        if (err) console.error("err : " + err);
+        res.redirect('/media');
+    });
+});
+
 router.get('/mediapage',(req,res)=>{
     console.log('교육영상');
     req.session.save(function(){
