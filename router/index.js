@@ -67,16 +67,6 @@ router.post('/login',(req,res)=>{
         // 로그인 확인
         console.log('data객체',data);
         console.log('data길이',data.length);
-        /*console.log('data객체',data);
-        console.log('data[0]',data[0]);
-        console.log('입력 id : ',id);
-        console.log('서버 id',data[0].id);
-        console.log(data[0].pw);
-        console.log(id == data[0].id);
-        console.log(pw == data[0].pw);*/
-        /*if(err){
-            throw err
-        }*/
         if(data.length>0){
             if(id == data[0].id && pw == data[0].pw){
                 console.log('로그인 성공');
@@ -85,10 +75,7 @@ router.post('/login',(req,res)=>{
                 req.session.name = data[0].name;
                 req.session.ID = data[0].id;
                 req.session.pw = data[0].pw;
-                /*
-                console.log('session id:',data[0].id);
-                console.log('session name:',data[0].name);
-                console.log('session pw:',data[0].pw);*/
+
                 req.session.save(function(){ // 세션 스토어에 적용하는 작업
                     res.render('main',{ // 정보전달
                         name : data[0].name,
@@ -300,21 +287,6 @@ router.post('/write', function(req,res,next){
     var content = req.body.content;
     var passwd = req.body.passwd;
     var datas = [userID,doctorID,userID,doctorID,reason,content,passwd];
-    /*
-    var doctorsql = "select name from userdata where id=?;";
-    connection.query(doctorsql,doctorID, function (err, rows) {
-        if (err) console.error("err : " + err);
-        console.log(rows[0].name);
-        datas.splice(2, 0, rows[0].name);
-        console.log(datas);
-    });
-    var usersql = "select name from userdata where id=?;";
-    connection.query(usersql,userID, function (err, rows) {
-        if (err) console.error("err : " + err);
-        console.log(rows[0].name);
-        datas.splice(2, 0, rows[0].name);
-        console.log(datas);
-    });*/
 
     console.log(datas);
     //중요: 여기서 이름하고 ID 받아오는; 방법 생각해야 함.
@@ -368,12 +340,19 @@ router.post('/delete',function(req,res,next)
 });
 
 router.get('/media',(req,res)=>{
+    var sql = "select idx, title, link, registrant, category ,recommend,content, date_format(regdate,'%Y-%m-%d %H:%i:%s') regdate from eduboard"
+
     console.log('교육영상');
-    req.session.save(function(){ 
-        res.render('edumedia',{
-            name : req.session.name,
-            ID : req.session.ID,
-            is_logined : true
+    connection.query(sql,function (err, rows) {
+        if (err) console.error("err : " + err);
+        req.session.save(function(){
+            res.render('edumedia',{
+                rows: rows,
+                name : req.session.name,
+                ID : req.session.ID,
+                age : req.session.age,
+                is_logined : true
+            });
         });
     });
 });
