@@ -397,6 +397,32 @@ router.get('/mediapage',(req,res)=>{
     });
 });
 
+router.get('/mediapage/:idx',function(req,res,next)
+{
+    var idx = req.params.idx;
+    var sql = "select idx, title, link, registrant, category , recommend,content, date_format(regdate,'%Y-%m-%d %H:%i:%s') regdate from eduboard where idx=?";
+    connection.query(sql,[idx], function(err,row)
+    {   
+
+        if(err) console.error(err);
+        var thumbnailURL = row[0].link.split('=');
+        var recommendList = row[0].recommend.split(',');
+        req.session.save(function(){
+            res.render('media-page', {
+                title:"글 상세", 
+                rows: row[0],
+                thumbnail: thumbnailURL[1],
+                recommendList: recommendList,
+                name : req.session.name,
+                ID : req.session.ID,
+                age : req.session.age,
+                is_logined : true,
+                idx : req.params.idx
+            });
+        });
+    });
+});
+
 router.get('/missionpage',(req,res)=>{
     console.log('교육영상');
     req.session.save(function(){ 

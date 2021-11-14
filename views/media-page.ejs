@@ -14,12 +14,12 @@
 
 <!-- CSS
 ================================================== -->
-<link rel="stylesheet" href="css/eduboard_style.css">
-<link rel="stylesheet" href="css/colors/navy.css" id="colors">
+<link rel="stylesheet" href="/css/eduboard_style.css">
+<link rel="stylesheet" href="/css/colors/navy.css" id="colors">
 
-<!--[if lt IE 9]>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
+<!--[if lt IE 9]><![endif]-->
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+
 
 </head>
 
@@ -35,7 +35,7 @@
 
 		<!-- Logo -->
 		<div id="logo">
-			<h7><a href="/"><img src="assets/img/medilogue-logo.svg" alt="Medilogue" style="width: 180px; height: 90;" /></a></h7>
+			<h7><a href="/"><img src="/assets/img/medilogue-logo.svg" alt="Medilogue" style="width: 180px; height: 90;" /></a></h7>
 		</div>
 	</div>
 </div>
@@ -49,13 +49,31 @@
 	<div class="container">
 		<div class="ten columns">
 			<span><a href="/media">영상 목록</a></span>
-			<h2>고혈압이 걱정된다면 필수 시청! 혈압 낮추려면 이 습관을 꼭 고치세요! <span class="part-time">만성질환 관리</span></h2>
+			<h2><%=rows.title%> 
+				<%
+				if(rows.category==1){%>
+					<span class="full-time">운동</span>
+				<%}%>
+
+				<%
+				if(rows.category==2){%>
+					<span class="internship">식습관 개선</span>
+				<%}%>
+
+				<%
+				if(rows.category==3){%>
+					<span class="part-time">만성질환관리</span>
+				<%}%>
+				<%
+				if(rows.category==4){%>
+					<span class="freelance">기타</span>
+				<%}%>
+			</h2>
 		</div>
 
 		<div class="six columns">
 			<a href="#" class="button dark"><i class="fa fa-star"></i> 스크랩하기</a>
 		</div>
-
 	</div>
 </div>
 
@@ -70,47 +88,29 @@
 		
 		<!-- Company Info -->
 		<div class="company-info">
-			<img src="https://img.youtube.com/vi/byN7XXMMBaY/mqdefault.jpg" alt="">
+			<img src="https://img.youtube.com/vi/<%=thumbnail%>/mqdefault.jpg" alt="">
 			<div class="content">
-				<h4>PEOPLE in 세브란스</h4>
-				<span><a href="https://www.youtube.com/watch?v=byN7XXMMBaY"><i class="fa fa-link"></i> 영상 시청 </a></span>
+				<h2><a href="<%=rows.link%>"><i class="fa fa-link"></i> 영상 시청</a></h2>
 			</div>
 			<div class="clearfix"></div>
 		</div>
 
 		<p class="margin-reset">
-			고혈압은 생활 습관 개선이 매우 중요합니다
-
-			혈압을 낮추는 한 가지  습관, 지금 영상으로 만나보세요
-
-			병을 낫게 하는 사람들,
-			세브란스병원 의사의 스토리를 경험해 보세요.
+			<%=rows.content%>
 		</p>
 
 		<br>
-<!-- 		<p>이 조건에 <strong>해당하는 분</strong> 들에게 유용합니다! :</p>
-
-		<ul class="list-1">
-			<li>Executing the Food Service program, including preparing and presenting our wonderful food offerings
-			to hungry customers on the go!
-			</li>
-			<li>Greeting customers in a friendly manner and suggestive selling and sampling items to help increase sales.</li>
-			<li>Keeping our Store food area looking terrific and ready for our valued customers by managing product 
-			inventory, stocking, cleaning, etc.</li>
-			<li>We’re looking for associates who enjoy interacting with people and working in a fast-paced environment!</li>
-		</ul> -->
-		
 		<br>
 
 		<h4 class="margin-bottom-10">이 조건에 <strong>해당하는 분</strong> 들에게 유용합니다! :</h4>
 
 		<ul class="list-1">
-			<li>현재 고혈압을 진단받은 사람</li>
-			<li>부모님이 고혈압인 사람</li>
-			<li>비만인 사람</li>
-			<li>흡연자</li>
-			<li>만 65세 이상 고령</li>
-			<li>지속적인 스트레스에 노출되는 사람</li>
+			<%
+			for(var i=0; i<recommendList.length; i++)
+			{
+			%>
+			<li><%=recommendList[i]%></li>
+			<%}%>
 		</ul>
 
 	</div>
@@ -130,15 +130,15 @@
 					<li>
 						<i class="fa fa-map-marker"></i>
 						<div>
-							<strong>위치:</strong>
-							<span>연세대학교 세브란스 병원</span>
+							<strong>작성자:</strong>
+							<span><%=rows.registrant%></span>
 						</div>
 					</li>
 					<li>
 						<i class="fa fa-user"></i>
 						<div>
 							<strong>제목:</strong>
-							<span>고혈압이 걱정된다면 필수 시청! 혈압 낮추려면 이 습관을 꼭 고치세요!</span>
+							<span><%=rows.title%></span>
 						</div>
 					</li>
 					<li>
