@@ -424,9 +424,20 @@ router.get('/mediapage/:idx',function(req,res,next)
 });
 
 router.get('/missionpage',(req,res)=>{
-    console.log('교육영상');
+    console.log('미션');
     req.session.save(function(){ 
         res.render('missionList',{
+            name : req.session.name,
+            ID : req.session.ID,
+            is_logined : true
+        });
+    });
+});
+
+router.get('/missionCalendar',(req,res)=>{
+    console.log('캘린더');
+    req.session.save(function(){
+        res.render('calendar',{
             name : req.session.name,
             ID : req.session.ID,
             is_logined : true
