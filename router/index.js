@@ -434,9 +434,9 @@ router.get('/missionpage',(req,res)=>{
 router.get('/missionpage/:idx',function(req,res,next)
 {
     var idx = req.params.idx;
-    var sql = "select mission, content, success from missionList where userID=? and regdate=?";
+    var sql = "select idx, mission, content, success from missionList where userID=? and regdate=?";
     connection.query(sql,[req.session.ID,idx], function(err,rows)
-    {   
+    {
         if(err) console.error(err);
         req.session.save(function(){
             res.render('missionList', {
@@ -450,6 +450,39 @@ router.get('/missionpage/:idx',function(req,res,next)
     });
 });
 
+router.post('/missioncheck', function(req,res,next){
+    var idx = req.body.idx;
+    var datas = [true,idx];
+    var sql = "update missionList set success=? where idx=?";
+    connection.query(sql,datas, function(err,rows)
+    {
+        if(err) console.error(err);
+        req.session.save(function(){
+            res.render('calendar', {
+                name : req.session.name,
+                ID : req.session.ID,
+                is_logined : true,
+            });
+        });
+    });
+});
+
+router.post('/missioncheck', function(req,res,next){
+    var idx = req.body.idx;
+    var datas = [true,idx];
+    var sql = "update missionList set success=? where idx=?";
+    connection.query(sql,datas, function(err,rows)
+    {
+        if(err) console.error(err);
+        req.session.save(function(){
+            res.render('calendar', {
+                name : req.session.name,
+                ID : req.session.ID,
+                is_logined : true,
+            });
+        });
+    });
+});
 
 router.get('/missionCalendar',(req,res)=>{
     console.log('캘린더');
