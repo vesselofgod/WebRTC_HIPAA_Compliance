@@ -5402,7 +5402,7 @@ function compareDaySegments(a, b) {
 ;;
 
 //BUG: unselect needs to be triggered when events are dragged+dropped
-
+//선택할 때 건드리기
 function SelectionManager() {
 	var t = this;
 	

@@ -403,19 +403,16 @@ router.get('/mediapage/:idx',function(req,res,next)
     var sql = "select idx, title, link, registrant, category , recommend,content, date_format(regdate,'%Y-%m-%d %H:%i:%s') regdate from eduboard where idx=?";
     connection.query(sql,[idx], function(err,row)
     {   
-
         if(err) console.error(err);
         var thumbnailURL = row[0].link.split('=');
         var recommendList = row[0].recommend.split(',');
         req.session.save(function(){
             res.render('media-page', {
-                title:"글 상세", 
                 rows: row[0],
                 thumbnail: thumbnailURL[1],
                 recommendList: recommendList,
                 name : req.session.name,
                 ID : req.session.ID,
-                age : req.session.age,
                 is_logined : true,
                 idx : req.params.idx
             });
@@ -433,6 +430,26 @@ router.get('/missionpage',(req,res)=>{
         });
     });
 });
+
+router.get('/missionpage/:idx',function(req,res,next)
+{
+    var idx = req.params.idx;
+    var sql = "select mission, content, success from missionList where userID=? and regdate=?";
+    connection.query(sql,[req.session.ID,idx], function(err,rows)
+    {   
+        if(err) console.error(err);
+        req.session.save(function(){
+            res.render('missionList', {
+                rows: rows,
+                name : req.session.name,
+                ID : req.session.ID,
+                is_logined : true,
+                idx : req.params.idx
+            });
+        });
+    });
+});
+
 
 router.get('/missionCalendar',(req,res)=>{
     console.log('캘린더');

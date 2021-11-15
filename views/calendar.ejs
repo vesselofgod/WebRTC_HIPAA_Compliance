@@ -82,8 +82,22 @@
 			selectHelper: true,
 
 			select: function(start, end, allDay) {
+				var todayList = start.toLocaleDateString().split('.');
+				todayList[0]=Number(todayList[0]);
+				todayList[1]=Number(todayList[1]);
+				todayList[2]=Number(todayList[2]);
+				if(todayList[1]<10){
+					todayList[1]="0"+String(todayList[1])
+				}
+				if(todayList[2]<10){
+					todayList[2]="0"+String(todayList[2])
+				}
+
+				var today = String(todayList[0])+String(todayList[1])+String(todayList[2]);
+				//var dayto = str(year)+str(month)+str(date);
+				//var title = prompt(today);
 				/*
-				var title = prompt('Event Title:');
+				
 				if (title) {
 					calendar.fullCalendar('renderEvent',
 						{
@@ -96,7 +110,8 @@
 					);
 				}
 				calendar.fullCalendar('unselect');*/
-				window.location.href='/missionpage';
+				var URLlink = '/missionpage/'+today;
+				window.location.href=URLlink;
 
 			},
 			droppable: true, // this allows things to be dropped onto the calendar !!!
