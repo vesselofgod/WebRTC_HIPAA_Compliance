@@ -27,15 +27,15 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#portfolio">Consulting</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#portfolio">화상상담</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#services">서비스 소개</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">메디로그 소개</a></li>
                         <% if(is_logined == false){ %>
-                            <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/login">로그인</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/register">회원가입</a></li>
                         <% }else{ %>
-                            <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/mypage">Mypage</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/mypage">마이페이지</a></li>
                         <% } %>
                         
                     </ul>
@@ -45,46 +45,11 @@
         <!-- Masthead-->
         <header class="masthead">
             <div class="container">
-                <div class="masthead-subheading">Welcome To Medilogue!</div>
-                <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
+                <div class="masthead-subheading">만성질환 관리의 새로운 패러다임</div>
+                <div class="masthead-heading text-uppercase">메 디 로 그</div>
+                <a class="btn btn-primary btn-xl text-uppercase" href="#portfolio">화상상담</a>
             </div>
         </header>
-        <!-- Services-->
-        <section class="page-section" id="services">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Services</h2>
-                    <h3 class="section-subheading text-muted">Medilogue에서 특별한 경험을!</h3>
-                </div>
-                <div class="row text-center">
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-chalkboard-teacher fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">Education</h4>
-                        <p class="text-muted">Medilogue는 퀴즈, 영상, 첨부파일, Q&A 등의 교육요소가 사용되어 환자들이 능동적으로 관리를 할 수 있도록 돕습니다. </p>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">Live Telemidicine Service</h4>
-                        <p class="text-muted">Medilogue는 개인 업무, 시간부족 등으로 잦은 의료기관 방문이 어렵거나 혹은 COVID-19로 인해 대면의료를 받기 어려운 분들도 쉽게 접할 수 있는 원격의료 서비스입니다.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">Web Security</h4>
-                        <p class="text-muted">Medilogue는 HIPAA 보안규정을 만족하는 서비스입니다. 따라서 환자의 개인적인 의료정보, 상담정보들이 안전하게 지켜집니다. </p>
-                    </div>
-                </div>
-            </div>
-        </section>
         <!-- Portfolio Grid-->
         <section class="page-section bg-light" id="portfolio">
             <div class="container">
@@ -186,6 +151,42 @@
                 </div>
             </div>
         </section>
+        <!-- Services-->
+        <section class="page-section" id="services">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Services</h2>
+                    <h3 class="section-subheading text-muted">Medilogue에서 특별한 경험을!</h3>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-chalkboard-teacher fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="my-3">Education</h4>
+                        <p class="text-muted">Medilogue는 퀴즈, 영상, 첨부파일, Q&A 등의 교육요소가 사용되어 환자들이 능동적으로 관리를 할 수 있도록 돕습니다. </p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="my-3">Live Telemidicine Service</h4>
+                        <p class="text-muted">Medilogue는 개인 업무, 시간부족 등으로 잦은 의료기관 방문이 어렵거나 혹은 COVID-19로 인해 대면의료를 받기 어려운 분들도 쉽게 접할 수 있는 원격의료 서비스입니다.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="my-3">Web Security</h4>
+                        <p class="text-muted">Medilogue는 HIPAA 보안규정을 만족하는 서비스입니다. 따라서 환자의 개인적인 의료정보, 상담정보들이 안전하게 지켜집니다. </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- About-->
         <section class="page-section" id="about">
             <div class="container">
