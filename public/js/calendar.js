@@ -9,7 +9,19 @@
  * For event drag & drop, requires jQuery UI draggable.
  * For event resizing, requires jQuery UI resizable.
  */
- 
+ /*
+import mysql from 'mysql';
+
+const connection = mysql.createConnection({
+    host:'localhost',
+    user:'root',
+    password:'2207',
+    database:'user'
+})
+
+connection.connect();
+connection.end();
+*/
 (function($, undefined) {
 
 
@@ -2177,6 +2189,7 @@ function BasicView(element, calendar, viewName) {
 
 
 	function buildTableHTML() {
+		//HTML에 달력 출력
 		var html =
 			"<table class='fc-border-separate' style='width:100%' cellspacing='0'>" +
 			buildHeadHTML() +
@@ -2255,6 +2268,7 @@ function BasicView(element, calendar, viewName) {
 
 
 	function buildCellHTML(date) {
+		//달력 숫자 쓰기
 		var contentClass = tm + "-widget-content";
 		var month = t.start.getMonth();
 		var today = clearTime(new Date());

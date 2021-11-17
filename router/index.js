@@ -484,6 +484,22 @@ router.post('/missioncheck', function(req,res,next){
     });
 });
 
+router.post('/addmission', function(req,res,next){
+    var doctorID = req.body.doctorID;
+    var userID = req.body.userID;
+    var mission = req.body.mission;
+    var content = req.body.content;
+    var regdate = req.body.regdate;
+    var datas = [userID,doctorID,mission,content,false,regdate];
+
+    console.log(datas);
+    var sql = "insert into missionList(userID, doctorID, mission, content, success, regdate) values(?,?,?,?,?,?);";
+    connection.query(sql,datas, function (err, rows) {
+        if (err) console.error("err : " + err);
+        res.redirect('/missionCalendar');
+    });
+});
+
 router.get('/missionCalendar',(req,res)=>{
     console.log('캘린더');
     req.session.save(function(){
