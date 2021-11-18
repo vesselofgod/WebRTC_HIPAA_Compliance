@@ -64,4 +64,3 @@ Node.js | WebRTC |socket.io
  - [개발 일정(Develop Schedule)](https://trello.com/b/JlaOjArx/live-telemidicine-service)
  - [Class Diagram](https://github.com/vesselofgod/WebRTC_HIPAA_Compliance/wiki/Class-Diagram)
  - [Mockup Screens](https://github.com/vesselofgod/WebRTC_HIPAA_Compliance/wiki/Mockup-Screens)
- - [개발일기](https://oflofty.tistory.com/category/%5BNode.js%5DMedilogue%20%EA%B0%9C%EB%B0%9C%EC%9D%BC%EA%B8%B0)
