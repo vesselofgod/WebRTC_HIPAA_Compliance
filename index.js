@@ -41,7 +41,7 @@ app.use(express.static('public'))
 
 var server = http.createServer(app);
 
-server.listen(process.env.PORT || 8000);
+server.listen(process.env.PORT || 8080);
 
 /*
 app.get("/", function(req, res){
