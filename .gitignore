@@ -1,1 +1,3 @@
 config/awsconfig.json
+.env
+/node_modules

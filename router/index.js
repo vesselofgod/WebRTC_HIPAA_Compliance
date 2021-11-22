@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 var session = require('express-session')
 var MySQLStore = require('express-mysql-session')(session)
 const upload = require('../config/multer')
+require('dotenv').config();
 
 app.set('views','./views')
 app.set('view engine', 'ejs')
@@ -16,25 +17,43 @@ app.use(session({
     secret: 'my key',
     resave: false,
     saveUninitialized:true,
-    store: sessionStore
+    //store: sessionStore
 }))
 
 const connection = mysql.createConnection({
-    host:'localhost',
-    user:'root',
-    password:'2207',
-    database:'user'
-})
+    host:process.env.DB_HOST,
+    user:process.env.DB_USER,
+    password:process.env.DB_PASSWORD,
+    database:process.env.DB_NAME
+})/*
 var options = {
     host:'localhost',
     user:'root',
     password:'2207',
     database:'user'
-}
-var sessionStore = new MySQLStore(options)
+}*/
+//var sessionStore = new MySQLStore(options)
 connection.connect()
 
-
+function handleDisconnect() {
+    connection.connect(function(err) {            
+      if(err) {                            
+        console.log('error when connecting to db:', err);
+        setTimeout(handleDisconnect, 2000); 
+      }                                   
+    });
+                                           
+    connection.on('error', function(err) {
+      console.log('db error', err);
+      if(err.code === 'PROTOCOL_CONNECTION_LOST') { 
+        return handleDisconnect();                      
+      } else {                                    
+        throw err;                              
+      }
+    });
+  }
+  
+  handleDisconnect();
 
 router.get('/',(req,res)=>{
     console.log('메인페이지 작동');

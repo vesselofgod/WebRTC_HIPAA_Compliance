@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "pm2 start index.js --name medilogue",
+    "stop": "pm2 stop medilogue"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
     "body-parser": "^1.19.0",
     "cjs-module": "^1.5.0",
     "cookie-parser": "^1.4.5",
+    "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-mysql-session": "^2.1.7",
