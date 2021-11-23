@@ -53,7 +53,11 @@ function handleDisconnect() {
     });
   }
   
-  handleDisconnect();
+handleDisconnect();
+
+//DB서버 연결 끊김 방지
+setInterval(function () { connection.query('SELECT 1'); }, 5000);
+
 
 router.get('/',(req,res)=>{
     console.log('메인페이지 작동');
