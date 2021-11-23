@@ -33,7 +33,7 @@ var options = {
     database:'user'
 }*/
 //var sessionStore = new MySQLStore(options)
-connection.connect()
+//connection.connect();
 
 function handleDisconnect() {
     connection.connect(function(err) {            
