@@ -71,6 +71,45 @@
 			                <a href="/missionCalendar" class="btn btn-default">미션 관리</a>
 			            </div>
 	        </div></li>
+				<%
+				for(var i=0; i<rows.length; i++)
+				{
+				%>
+				<li><div class="media">
+					<div class="media-left align-self-center">
+						<img class="rounded-circle" src="https://randomuser.me/api/portraits/women/<%=i+1%>.jpg">
+					</div>
+					<div class="media-body" >
+						<h4><%=rows[i].userName%> 님</h4>
+						<div style="margin-left: 10px;">이번달의 미션수행도:</div>
+							<div class="progress" style="width: 90%; margin-left: 12px; margin-top: 12px;">
+								<%
+								if(rows[i].per>=80)
+								{
+								%>
+									<div class="progress-bar bg-info progress-bar-striped progress-bar-animated" style="width:<%=rows[i].per%>%"><%=rows[i].per%> %</div>
+								<%}
+								else if(rows[i].per >=60 && rows[i].per<80)
+								{
+								%>
+									<div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width:<%=rows[i].per%>%"><%=rows[i].per%> %</div>
+								<%}
+								else if(rows[i].per >=40 && rows[i].per<60)
+								{
+								%>
+									<div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" style="width:<%=rows[i].per%>%"><%=rows[i].per%> %</div>
+								<%}
+								else{
+								%>
+									<div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:<%=rows[i].per%>%"><%=rows[i].per%> %</div>
+								<%}%>
+							</div><br>
+						</div>
+					<div class="media-right align-self-center">
+						<a href="/missionCalendar" class="btn btn-default">미션 관리</a>
+					</div>
+				</div></li>
+				<%}%>
 	        </ul>
 	    </div>
 </div>

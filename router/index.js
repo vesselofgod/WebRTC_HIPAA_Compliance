@@ -509,14 +509,14 @@ router.post('/missioncheck', function(req,res,next){
 
 router.post('/addmission', function(req,res,next){
     var doctorID = req.body.doctorID;
+    var userName = req.body.userName;
     var userID = req.body.userID;
     var mission = req.body.mission;
     var content = req.body.content;
     var regdate = req.body.regdate;
-    var datas = [userID,doctorID,mission,content,false,regdate];
+    var datas = [userName,userID,doctorID,mission,content,false,regdate];
 
-    console.log(datas);
-    var sql = "insert into missionList(userID, doctorID, mission, content, success, regdate) values(?,?,?,?,?,?);";
+    var sql = "insert into missionList(userName, userID, doctorID, mission, content, success, regdate) values(?,?,?,?,?,?,?);";
     connection.query(sql,datas, function (err, rows) {
         if (err) console.error("err : " + err);
         res.redirect('/missionCalendar');
@@ -535,12 +535,34 @@ router.get('/missionCalendar',(req,res)=>{
 });
 
 router.get('/care',(req,res)=>{
+    var sql = 'select missionList.userID, missionList.userName, round(count(case when missionList.success=1 then 1 end)/count(missionList.success)*100,1) as per from missionList where missionList.doctorID = ? group by missionList.userID order by missionList.userID DESC;'
     console.log('환자관리');
-    req.session.save(function(){ // 세션 스토어에 적용하는 작업
-        res.render('care',{ // 정보전달
-            name : req.session.name,
-            ID : req.session.ID,
-            is_logined : true
+    //and missionList.regdate > ? and missionList.regdate <= ? 
+    var doctorID = req.session.ID;
+    var today = new Date();
+    let year = today.getFullYear(); // 년도
+    let month = today.getMonth() + 1;  // 월
+    if(month<10){
+        month = "0"+String(month);
+    }
+    else{
+        month=String(month);
+    }
+
+    let monthStart = year+ month+"00";
+    let monthEnd = year+ month+"31";
+    datas = [doctorID];
+    connection.query(sql, datas ,function(err,rows)
+    {
+        console.log(rows[0]);
+        if(err) console.error(err);
+        req.session.save(function(){
+            res.render('care', {
+                rows : rows,
+                name : req.session.name,
+                ID : req.session.ID,
+                is_logined : true,
+            });
         });
     });
 });
