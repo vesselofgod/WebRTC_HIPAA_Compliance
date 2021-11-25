@@ -534,4 +534,15 @@ router.get('/missionCalendar',(req,res)=>{
     });
 });
 
+router.get('/care',(req,res)=>{
+    console.log('환자관리');
+    req.session.save(function(){ // 세션 스토어에 적용하는 작업
+        res.render('care',{ // 정보전달
+            name : req.session.name,
+            ID : req.session.ID,
+            is_logined : true
+        });
+    });
+});
+
 module.exports=router

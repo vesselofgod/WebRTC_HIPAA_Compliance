@@ -1,0 +1,84 @@
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<link href="css/care.css" rel="stylesheet" />
+<!------ Include the above in your HEAD tag ---------->
+
+<section class="row-section">
+    <div class="container">
+	    <div class="row">
+		    <h2 class="text-center"><span>관리중인 환자 목록</span>미션을 추가해주세요!</h2>
+	    </div>
+	    <div class="col-md-10 offset-md-1 row-block">
+	        <ul id="sortable">
+	            <li><div class="media">
+	            <div class="media-left align-self-center">
+	                <img class="rounded-circle" src="https://randomuser.me/api/portraits/women/49.jpg">
+	            </div>
+	            <div class="media-body" >
+	                <h4>Camila Terry</h4>
+	                <div style="margin-left: 10px;">이번달의 미션수행도:</div>
+	                <div class="progress" style="width: 90%; margin-left: 12px; margin-top: 12px;">
+                      <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width:75%">75%</div>
+                  </div><br>
+	            </div>
+	            <div class="media-right align-self-center">
+	                <a href="/missionCalendar" class="btn btn-default">미션 관리</a>
+	            </div>
+	        </div></li>
+	            <li><div class="media">
+	            <div class="media-left align-self-center">
+	                <img class="rounded-circle" src="https://randomuser.me/api/portraits/men/42.jpg">
+	            </div>
+	            <div class="media-body" >
+	                <h4>Camila Teddy</h4>
+	                <div style="margin-left: 10px;">이번달의 미션수행도:</div>
+	                <div class="progress" style="width: 90%; margin-left: 12px; margin-top: 12px;">
+                      <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" style="width:90%">90%</div>
+                  </div><br>
+	            </div>
+	            <div class="media-right align-self-center">
+	                <a href="/missionCalendar" class="btn btn-default">미션 관리</a>
+	            </div>
+	        </div></li>
+	            <li><div class="media">
+	            <div class="media-left align-self-center">
+	                <img class="rounded-circle" src="https://randomuser.me/api/portraits/women/67.jpg">
+	            </div>
+	            <div class="media-body">
+	                <h4>Deann Payne</h4>
+									<div style="margin-left: 10px;">이번달의 미션수행도:</div>
+			                <div class="progress" style="width: 90%; margin-left: 12px; margin-top: 12px;">
+		                      <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" style="width:40%">40%</div>
+		                  </div><br>
+			            </div>
+			            <div class="media-right align-self-center">
+			                <a href="/missionCalendar" class="btn btn-default">미션 관리</a>
+			            </div>
+	        </div></li>
+	            <li><div class="media">
+	            <div class="media-left align-self-center">
+	                <img class="rounded-circle" src="https://randomuser.me/api/portraits/men/89.jpg">
+	            </div>
+	            <div class="media-body">
+	                <h4>Donald Perkins</h4>
+									<div style="margin-left: 10px;">이번달의 미션수행도:</div>
+			                <div class="progress" style="width: 90%; margin-left: 12px; margin-top: 12px;">
+		                      <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:17%">17%</div>
+		                  </div><br>
+			            </div>
+			            <div class="media-right align-self-center">
+			                <a href="/missionCalendar" class="btn btn-default">미션 관리</a>
+			            </div>
+	        </div></li>
+	        </ul>
+	    </div>
+</div>
+</section>
+  <script>
+  $( function() {
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
+  } );
+  </script>
+<script	  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
