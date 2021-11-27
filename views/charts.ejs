@@ -43,17 +43,17 @@
                             <div class="sb-sidenav-menu-heading">Core</div>
                             <a class="nav-link" href="/mypage">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard
+                                MYPAGE
                             </a>
 
                             <div class="sb-sidenav-menu-heading">Addons</div>
                             <a class="nav-link" href="/charts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Charts
+                                <%= name %>님의 건강통계
                             </a>
                             <a class="nav-link" href="/tables">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tables
+                                <%= name %>님의 상담내역
                             </a>
                         </div>
                     </div>
@@ -66,11 +66,7 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Charts</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="/mypage">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Charts</li>
-                        </ol>
+                        <h1 class="mt-4"><%= name %>님의 건강통계</h1>
                         <div class="card mb-4">
                             <div class="card-body">
                                 Chart.js is a third party plugin that is used to generate the charts in this template. The charts below have been customized - for further customization options, please visit the official

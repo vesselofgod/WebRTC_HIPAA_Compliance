@@ -44,17 +44,17 @@
                             <div class="sb-sidenav-menu-heading">Core</div>
                             <a class="nav-link" href="/mypage">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard
+                                MYPAGE
                             </a>
 
                             <div class="sb-sidenav-menu-heading">Addons</div>
                             <a class="nav-link" href="/charts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Charts
+                                <%= name %>님의 건강통계
                             </a>
                             <a class="nav-link" href="/tables">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tables
+                                <%= name %>님의 상담내역
                             </a>
                         </div>
                     </div>
@@ -67,11 +67,7 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Tables</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="/mypage">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Tables</li>
-                        </ol>
+                        <h1 class="mt-4"><%= name %>님의 상담내역</h1>
                         <div class="card mb-4">
                             <div class="card-body">
                                 DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
