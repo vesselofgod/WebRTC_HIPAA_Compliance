@@ -10,6 +10,9 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
+ @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -3956,6 +3959,7 @@ textarea.form-control-lg {
 }
 
 .nav-link {
+  font-family: 'Nanum Gothic', sans-serif;
   display: block;
   padding: 0.5rem 1rem;
   color: #0d6efd;
@@ -4558,6 +4562,7 @@ textarea.form-control-lg {
 }
 
 .card-body {
+  font-family: 'Nanum Gothic', sans-serif;
   flex: 1 1 auto;
   padding: 1rem 1rem;
 }
@@ -11903,6 +11908,7 @@ form.login a:hover
   width: 135%;
 }
 .question{
+  font-family: 'Nanum Gothic', sans-serif;
   background: #0066cc;
   padding: 40px;
   color: #fff;
@@ -12001,7 +12007,8 @@ color: #00FF00;
 }
 
 #result-of-question th{
-text-align: center;
+  font-family: 'Nanum Gothic', sans-serif;
+  text-align: center;
   background: #75ba48;
   color: #fff;
   padding: 18px;
@@ -12011,7 +12018,8 @@ text-align: center;
   margin-bottom: 30px;
 }
 #result-of-question  td{
-text-align: center;
+  font-family: 'Nanum Gothic', sans-serif;
+  text-align: center;
   color: #222;
   background-color: #fff;
   padding: 18px;
@@ -12021,6 +12029,7 @@ text-align: center;
 }
 
 #totalCorrect{
+  font-family: 'Nanum Gothic', sans-serif;
   color: #fff;
   background: #75ba48;
   padding: 22px 20px;

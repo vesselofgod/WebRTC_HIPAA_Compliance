@@ -12,7 +12,7 @@
 @import url("font-awesome.css");		/* Font Awesome Icons */
 @import url("http://fonts.googleapis.com/css?family=Montserrat:400,700");
 @import url("http://fonts.googleapis.com/css?family=Lato:400,700,300");
-
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap');
 
 /* ------------------------------------------------------------------- */
 /* Table of Contents
@@ -2788,6 +2788,7 @@ img.mfp-img {
 .resume-titlebar .resumes-list-content,
 .resumes-list .resumes-list-content,
 .job-list .job-list-content {
+	font-family: 'Nanum Gothic', sans-serif;
 	display: block;
 	margin-left: 125px;
 	position: relative;

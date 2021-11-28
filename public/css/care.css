@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/earlyaccess/jejugothic.css');
 @import url("https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap');
 .row-section{float:left; width:100%;
 }
-.row-section h2{font-family: 'jejugothic'; float:left; width:100%; color: black; margin-bottom:30px; font-size: 14px;}
-.row-section h2 span{font-family: 'jejugothic'; display:block; font-size:45px; text-transform:none; margin-bottom:20px; margin-top:30px;font-weight:700;}
+.row-section h2{font-family: 'Nanum Gothic', sans-serif; float:left; width:100%; color: black; margin-bottom:30px; font-size: 14px;}
+.row-section h2 span{font-family: 'Nanum Gothic', sans-serif; display:block; font-size:45px; text-transform:none; margin-bottom:20px; margin-top:30px;font-weight:700;}
 .row-section h2 a{color:#d2abce;}
-.row-section h3{font-family: 'jejugothic';}
+.row-section h3{font-family: 'Nanum Gothic', sans-serif;}
 .row-section .row-block{background:#fff; padding:20px; margin-bottom:50px;}
 .row-section .row-block ul{margin:0; padding:0;}
 .row-section .row-block ul li{list-style:none; margin-bottom:20px;}
