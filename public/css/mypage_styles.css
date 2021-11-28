@@ -5613,8 +5613,9 @@ textarea.form-control-lg {
 }
 
 @media (min-width: 576px) {
+  /*길이만 길게...*/
   .modal-dialog {
-    max-width: 500px;
+    width: 800px;
     margin: 1.75rem auto;
   }
 
@@ -11713,8 +11714,8 @@ body {
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
   cursor: pointer;
   background-color: transparent;
 }
@@ -11902,11 +11903,13 @@ form.login a:hover
   width: 135%;
 }
 .question{
-  background: #75ba48;
-  padding: 20px;
+  background: #0066cc;
+  padding: 40px;
   color: #fff;
   border-bottom-right-radius: 55px;
   border-top-left-radius: 55px;
+  border-bottom-left-radius: 55px;
+  border-top-right-radius: 55px;
 }
 
 #qid{
@@ -12004,6 +12007,8 @@ text-align: center;
   padding: 18px;
   font-size: 18px;
   border: none;
+  margin-left: 50px;
+  margin-bottom: 30px;
 }
 #result-of-question  td{
 text-align: center;

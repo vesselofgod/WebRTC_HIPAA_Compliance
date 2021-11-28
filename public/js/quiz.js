@@ -13,10 +13,9 @@ $(function(){
     var correctCount = 0;
     var q = [
         {'Q':'How do you write "Hello World" in an alert box?', 'A':2,'C':['msg("Hello World");','alert("Hello World");','alertBox("Hello World");']},
-        {'Q':'How do you create a function in JavaScript?', 'A':3,'C':['function:myFunction()','function = myFunction()','function myFunction()']},
-        {'Q':'How to write an IF statement in JavaScript?', 'A':1,'C':['if (i == 5)','if i = 5 then','if i == 5 then']},
-        {'Q':'How does a FOR loop start?', 'A':2,'C':['for (i = 0; i <= 5)','for (i = 0; i <= 5; i++)','for i = 1 to 5']},
-        {'Q':'What is the correct way to write a JavaScript array?', 'A':3,'C':['var colors = "red", "green", "blue"','var colors = (1:"red", 2:"green", 3:"blue")','var colors = ["red", "green", "blue"]']}
+        {'Q':'다음 중 틀린 것은?', 'A':3,'C':['혈압은 계절을 탄다','고혈압은 유전이다.','고혈압 환자에게는 반신욕이 좋다']},
+        {'Q':'혈압약은 언제 먹어야 하나요?', 'A':3,'C':['식후 3번','매일 아침','하루 1회, 시간은 상관없다.']},
+        {'Q':'임신 9주인 37세가 산전진찰을 위해 병원에 왔다. 어머니가 당뇨병으로 치료 중이다. 키 150 cm, 몸무게 90 kg이다. 처치는?', 'A':2,'C':['경과관찰','50 g 경구포도당부하검사','인슐린']}
     ];
 
  
