@@ -7,6 +7,9 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>My page-Tables</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="/css/mypage_styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -68,8 +71,7 @@
                                         <%}%>
                                     </tbody>
                                 </table>
-                                <button type="button" class="btn btn-primary btn-xl text-uppercase" onClick="location.href='/write'">상담내용추가</button>
-                            </div>
+                                <button style="height:40px; margin:0px 0px 10px 0px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#adduser" ><i class="fas fa-plus"></i>│미션 등록하기 </button>                              </div>
                         </div>
                     </div>
                 </main>
@@ -92,4 +94,58 @@
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="/js/datatables-simple-demo.js"></script>
     </body>
+    <form action="/addmission" method="post">
+        <div class="modal fade" id="adduser" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Add A Mission</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">
+              <div class="row">
+                <input type="hidden" name="doctorID" value="<%=ID%>"/>
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">환자 이름</span>
+                  </div>
+                  <input type="text" class="form-control" name="userName" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">환자 ID</span>
+                  </div>
+                  <input type="text" class="form-control" name="userID" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">미션</span>
+                  </div>
+                  <input type="text" class="form-control" name="mission" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">세부내용</span>
+                  </div>
+                  <input type="text" class="form-control" name="content" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">미션일 등록</span>
+                  </div>
+                  <input type="date" name="regdate">
+                </div>
+              </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#error">미션 등록</button>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div>
+      </form>
 </html>
