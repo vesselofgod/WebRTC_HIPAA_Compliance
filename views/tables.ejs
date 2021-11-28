@@ -8,7 +8,7 @@
         <meta name="author" content="" />
         <title>My page-Tables</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-        <link href="css/mypage_styles.css" rel="stylesheet" />
+        <link href="/css/mypage_styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
@@ -21,19 +21,7 @@
                 <            
             <!-- Navbar Search-->
                 <!-- Navbar Search-->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars ms-1"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item" ><a class="nav-link" href="#services" >Services</a></li>
-                        <li class="nav-item" ><a class="nav-link" href="#portfolio" >Consulting</a></li>
-                        <li class="nav-item" ><a class="nav-link" href="#team" >Team</a></li>
-                        <li class="nav-item" ><a class="nav-link" href="/logout" >Logout</a></li>
-                        <li class="nav-item" ><a class="nav-link" href="/mypage">Mypage</a></li>
-                    </ul>
-                </div>
+
             </div>
         </nav>
         <div id="layoutSidenav">
@@ -59,8 +47,8 @@
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
                         <%= name %> 
+                        <div class="small">님 환영합니다.</div>
                     </div>
                 </nav>
             </div>
@@ -69,11 +57,6 @@
                     <div class="container-fluid px-4">
                         <h1 class="mt-4"><%= name %>님의 상담내역</h1>
                         <div class="card mb-4">
-                            <div class="card-body">
-                                DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-                                <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-                                .
-                            </div>
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">
@@ -129,20 +112,14 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2021</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
                         </div>
                     </div>
                 </footer>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/mypage.js"></script>
+        <script src="/js/mypage.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
+        <script src="/js/datatables-simple-demo.js"></script>
     </body>
 </html>

@@ -7,9 +7,9 @@ var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
   type: 'pie',
   data: {
-    labels: ["Blue", "Red", "Yellow", "Green"],
+    labels: ["트리글리세라이드", "총 콜레스테롤", "HDL-콜레스테롤", "LDL-콜레스테롤"],
     datasets: [{
-      data: [12.21, 15.58, 11.25, 8.32],
+      data: [161.4, 215.58, 57.45, 158.32],
       backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
     }],
   },
