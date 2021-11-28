@@ -109,18 +109,9 @@
               <div class="row">
                 <input type="hidden" name="doctorID" value="<%=ID%>"/>
                 <input type="hidden" name="success" value="0"/>
-                <div class="input-group input-group-sm mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">환자 이름</span>
-                  </div>
-                  <input type="text" class="form-control" name="userName" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                </div>
-                <div class="input-group input-group-sm mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">환자 ID</span>
-                  </div>
-                  <input type="text" class="form-control" name="userID" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                </div>
+                <input type="hidden" name="userName" value="<%=rows[0].userName%>"/>
+                <input type="hidden" name="userID" value="<%=rows[0].userID%>"/>
+
                 <div class="input-group input-group-sm mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-sm">미션</span>

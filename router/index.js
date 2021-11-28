@@ -554,7 +554,7 @@ router.get('/care',(req,res)=>{
 router.get('/caredetail/:id',(req,res)=>{
     console.log('환자관리');
     var userID = req.params.id;
-    var sql = "select userName, mission, content, success, date_format(regdate,'%Y-%m-%d') regdate from missionList where userID=? and doctorID=?"
+    var sql = "select userID, userName, mission, content, success, date_format(regdate,'%Y-%m-%d') regdate from missionList where userID=? and doctorID=?"
 
     connection.query(sql,[userID,req.session.ID], function (err, rows) {
         if (err) console.error("err : " + err);
