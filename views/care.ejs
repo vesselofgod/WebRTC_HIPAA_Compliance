@@ -22,7 +22,7 @@
 					</div>
 					<div class="media-body" >
 						<h4><%=rows[i].userName%> 님</h4>
-						<div style="margin-left: 10px;">이번달의 미션수행도:</div>
+						<div style="margin-left: 10px;">미션수행도:</div>
 							<div class="progress" style="width: 90%; margin-left: 12px; margin-top: 12px;">
 								<%
 								if(rows[i].per>=80)
@@ -52,9 +52,51 @@
 				</div></li>
 				<%}%>
 	        </ul>
+			<button style="height:40px; margin-top:40px; position: absolute; left: 43%; right: 50%;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#adduser" >환자 등록하기</button>
 	    </div>
 </div>
 </section>
+<form action="/addmission" method="post">
+	<div class="modal fade" id="adduser" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title" id="staticBackdropLabel">Add A Mission</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			  <span aria-hidden="true">×</span>
+			</button>
+		  </div>
+		  <div class="modal-body">
+		  <div class="row">
+			<input type="hidden" name="doctorID" value="<%=ID%>"/>
+			<input type="hidden" name="regdate" value="20000101"/>
+			<input type="hidden" name="mission" value="환자등록"/>
+			<input type="hidden" name="content" value=""/>
+			<input type="hidden" name="success" value="1"/>
+
+			<div class="input-group input-group-sm mb-3">
+			  <div class="input-group-prepend">
+				<span class="input-group-text" id="inputGroup-sizing-sm">환자 이름</span>
+			  </div>
+			  <input type="text" class="form-control" name="userName" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+			</div>
+			<div class="input-group input-group-sm mb-3">
+			  <div class="input-group-prepend">
+				<span class="input-group-text" id="inputGroup-sizing-sm">환자 ID</span>
+			  </div>
+			  <input type="text" class="form-control" name="userID" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+			</div>
+		  </div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+			<button type="submit" class="btn btn-success" data-toggle="modal" data-target="#error">미션 등록</button>
+		  </div>
+		</div>
+	  </div>
+	</div> 
+  </div>
+  </form>
   <script>
   $( function() {
     $( "#sortable" ).sortable();

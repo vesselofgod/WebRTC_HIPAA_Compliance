@@ -490,23 +490,6 @@ router.post('/missioncheck', function(req,res,next){
     });
 });
 
-router.post('/missioncheck', function(req,res,next){
-    var idx = req.body.idx;
-    var datas = [true,idx];
-    var sql = "update missionList set success=? where idx=?";
-    connection.query(sql,datas, function(err,rows)
-    {
-        if(err) console.error(err);
-        req.session.save(function(){
-            res.render('calendar', {
-                name : req.session.name,
-                ID : req.session.ID,
-                is_logined : true,
-            });
-        });
-    });
-});
-
 router.post('/addmission', function(req,res,next){
     var doctorID = req.body.doctorID;
     var userName = req.body.userName;
@@ -514,7 +497,8 @@ router.post('/addmission', function(req,res,next){
     var mission = req.body.mission;
     var content = req.body.content;
     var regdate = req.body.regdate;
-    var datas = [userName,userID,doctorID,mission,content,false,regdate];
+    var success = req.body.success
+    var datas = [userName,userID,doctorID,mission,content,success,regdate];
 
     var sql = "insert into missionList(userName, userID, doctorID, mission, content, success, regdate) values(?,?,?,?,?,?,?);";
     connection.query(sql,datas, function (err, rows) {
