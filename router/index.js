@@ -567,4 +567,23 @@ router.get('/care',(req,res)=>{
     });
 });
 
+router.get('/caredetail/:id',(req,res)=>{
+    console.log('환자관리');
+    var userID = req.params.id;
+    var sql = "select userName, mission, content, success, date_format(regdate,'%Y-%m-%d') regdate from missionList where userID=?"
+
+    connection.query(sql,userID, function (err, rows) {
+        if (err) console.error("err : " + err);
+        req.session.save(function(){ // 세션 스토어에 적용하는 작업
+            res.render('caredetail',{ // 정보전달
+                title: '게시판 리스트',
+                rows: rows,
+                name : req.session.name,
+                ID : req.session.ID,
+                is_logined : true
+            });
+        });
+    });
+});
+
 module.exports=router

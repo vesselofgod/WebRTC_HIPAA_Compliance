@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>My page-Tables</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <link href="/css/mypage_styles.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" id="mainNav">
+            <a class="navbar-brand ps-3" href="/">Medilogue</a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4"><%=rows[0].userName%>님의 미션내역</h1>
+                        <div class="card mb-4">
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                미션내역
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>이름</th>
+                                            <th>미션</th>
+                                            <th>상세내용</th>
+                                            <th>성공여부</th>
+                                            <th>미션일자</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>이름</th>
+                                            <th>미션</th>
+                                            <th>상세내용</th>
+                                            <th>성공여부</th>
+                                            <th>미션일자</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <%
+                                        for(var i=0; i<rows.length; i++)
+                                        {
+                                        %>
+                                            <tr>
+                                                <td><%=rows[i].userName%></td>
+                                                <td><%=rows[i].mission%></td>
+                                                <td><%=rows[i].content%></td>
+                                                <%if(rows[i].success==1){%>
+                                                    <td>O</td>
+                                                <%}else{%>
+                                                    <td>X</td>
+                                                <%}%>
+                                                <td><%=rows[i].regdate%></td>
+                                            </tr>
+                                        <%}%>
+                                    </tbody>
+                                </table>
+                                <button type="button" class="btn btn-primary btn-xl text-uppercase" onClick="location.href='/write'">상담내용추가</button>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; Your Website 2021</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/js/mypage.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="/js/datatables-simple-demo.js"></script>
+    </body>
+</html>
