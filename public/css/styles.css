@@ -167,7 +167,10 @@ body {
 	}
 	
 	video {
-		width:100%;
+		width:10%;
+		position: fixed;
+		top:15%;
+		right:36%;
 	}
 
 }
