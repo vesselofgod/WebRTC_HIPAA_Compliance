@@ -3,95 +3,101 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
 <!------ Include the above in your HEAD tag ---------->
-
-<div class="container">
-  <div class="card-body">
-    <button style="height:40px; margin:0px 0px 10px 0px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#adduser" ><i class="fas fa-plus"></i>│미션 등록하기 </button>    
-    <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">오늘의 미션</th>
-          <th scope="col">세부조건</th>
-          <th scope="col">달성 여부</th>
-          <th scope="col">미션 체크</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%
-          for(var i=0; i<rows.length; i++)
-          {
-          %>
-          <form action="/missioncheck" method="post">
+<html>
+  <head>
+    <title>오늘의 미션</title>
+    <link rel="icon" type="image/x-icon" href="/assets/identi-ca_1.ico" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card-body">
+        <button style="height:40px; margin:0px 0px 10px 0px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#adduser" ><i class="fas fa-plus"></i>│미션 등록하기 </button>    
+        <table class="table">
+          <thead class="thead-dark">
             <tr>
-              <input type="hidden" name="idx" value="<%=rows[i].idx%>"/>
-              <th scope="row"><%=i+1%></th>
-              <td><%=rows[i].mission%></td>
-              <td><%=rows[i].content%></td>
-              <td>
-                <%
-                if(rows[i].success==true)
-                {
-                %>
-                <i class="fas fa-check"></i>
-                <%}%>
-              </td>
-              <td><button style="height:40px;" type="submit" class="btn btn-danger"><i class="fas fa-check"></i></button></td>
+              <th scope="col">#</th>
+              <th scope="col">오늘의 미션</th>
+              <th scope="col">세부조건</th>
+              <th scope="col">달성 여부</th>
+              <th scope="col">미션 체크</th>
             </tr>
-          </form>
-        <%}%>
-      </tbody>
-    </table>
-  </div>
-<!--Modal-->
-<form action="/addmission" method="post">
-  <div class="modal fade" id="adduser" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Add A Mission</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">
-        <div class="row">
-          <input type="hidden" name="doctorID" value="<%=ID%>"/>
-          <input type="hidden" name="regdate" value="<%=idx%>"/>
-          <input type="hidden" name="success" value="0"/>
-          <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-sm">환자 이름</span>
-            </div>
-            <input type="text" class="form-control" name="userName" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-          </div>
-          <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-sm">환자 ID</span>
-            </div>
-            <input type="text" class="form-control" name="userID" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-          </div>
-          <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-sm">미션</span>
-            </div>
-            <input type="text" class="form-control" name="mission" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-          </div>
-          <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-sm">세부내용</span>
-            </div>
-            <input type="text" class="form-control" name="content" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-          </div>
-        </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-          <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#error">미션 등록</button>
-        </div>
+          </thead>
+          <tbody>
+            <%
+              for(var i=0; i<rows.length; i++)
+              {
+              %>
+              <form action="/missioncheck" method="post">
+                <tr>
+                  <input type="hidden" name="idx" value="<%=rows[i].idx%>"/>
+                  <th scope="row"><%=i+1%></th>
+                  <td><%=rows[i].mission%></td>
+                  <td><%=rows[i].content%></td>
+                  <td>
+                    <%
+                    if(rows[i].success==true)
+                    {
+                    %>
+                    <i class="fas fa-check"></i>
+                    <%}%>
+                  </td>
+                  <td><button style="height:40px;" type="submit" class="btn btn-danger"><i class="fas fa-check"></i></button></td>
+                </tr>
+              </form>
+            <%}%>
+          </tbody>
+        </table>
       </div>
+    <!--Modal-->
+    <form action="/addmission" method="post">
+      <div class="modal fade" id="adduser" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Add A Mission</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            <div class="row">
+              <input type="hidden" name="doctorID" value="<%=ID%>"/>
+              <input type="hidden" name="regdate" value="<%=idx%>"/>
+              <input type="hidden" name="success" value="0"/>
+              <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">환자 이름</span>
+                </div>
+                <input type="text" class="form-control" name="userName" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+              </div>
+              <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">환자 ID</span>
+                </div>
+                <input type="text" class="form-control" name="userID" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+              </div>
+              <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">미션</span>
+                </div>
+                <input type="text" class="form-control" name="mission" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+              </div>
+              <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">세부내용</span>
+                </div>
+                <input type="text" class="form-control" name="content" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+              </div>
+            </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+              <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#error">미션 등록</button>
+            </div>
+          </div>
+        </div>
+      </div> 
     </div>
-  </div> 
-</div>
-</form>
-
+    </form>
+  </body>
+</html>
