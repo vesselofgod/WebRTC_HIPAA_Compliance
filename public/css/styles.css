@@ -137,21 +137,27 @@ body {
 	.local_div
 	{	
 		/*포지션 수정해야 함.*/
-		width: 220px;
+		/*width: 220px;
 		display: block;
 		position:absolute;
 		top:90px;
 		right:550px;
+		z-index:1;*/
+		width:15%;
+		position: fixed;
+		right:36%;
+		top:12.2%;
 		z-index:1;
 	}
 
 	.remote_div 
 	{
 		display: flex;
-		width: 100%;
+		width: 1200px;
 		position:relative;
     	overflow:hidden;
     	z-index:-1;
+		table-layout: fixed;
 	}
 
 	.remote2_div {
