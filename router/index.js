@@ -17,7 +17,6 @@ app.use(session({
     secret: 'my key',
     resave: false,
     saveUninitialized:true,
-    //store: sessionStore
 }))
 
 const connection = mysql.createConnection({
@@ -25,15 +24,7 @@ const connection = mysql.createConnection({
     user:process.env.DB_USER,
     password:process.env.DB_PASSWORD,
     database:process.env.DB_NAME
-})/*
-var options = {
-    host:'localhost',
-    user:'root',
-    password:'2207',
-    database:'user'
-}*/
-//var sessionStore = new MySQLStore(options)
-//connection.connect();
+})
 
 function handleDisconnect() {
     connection.connect(function(err) {            
@@ -55,12 +46,12 @@ function handleDisconnect() {
   
 handleDisconnect();
 
-//DB서버 연결 끊김 방지
+//DB Server connecting error block, Send queries to the server every 5 seconds.
 setInterval(function () { connection.query('SELECT 1'); }, 5000);
 
 
 router.get('/',(req,res)=>{
-    console.log('메인페이지 작동');
+    //main page loading
     console.log(req.session);
     if(req.session.is_logined  == true){
         res.render('main',{
@@ -76,31 +67,27 @@ router.get('/',(req,res)=>{
 });
 
 router.get('/login',(req,res)=>{
-    console.log('로그인');
+    //login page loading
     res.render('new_login');
 });
 
 router.post('/login',(req,res)=>{
+    //login info check
     const body = req.body;
-    //console.log(body);
     const id = body.id;
     const pw = body.pw;
 
     connection.query('select * from userdata where id=?',[id],(err,data)=>{
-        // 로그인 확인
-        console.log('data객체',data);
-        console.log('data길이',data.length);
         if(data.length>0){
             if(id == data[0].id && pw == data[0].pw){
                 console.log('로그인 성공');
-                // 세션에 추가
                 req.session.is_logined  = true;
                 req.session.name = data[0].name;
                 req.session.ID = data[0].id;
                 req.session.pw = data[0].pw;
 
-                req.session.save(function(){ // 세션 스토어에 적용하는 작업
-                    res.render('main',{ // 정보전달
+                req.session.save(function(){
+                    res.render('main',{
                         name : data[0].name,
                         ID : data[0].id,
                         age : data[0].age,
@@ -109,12 +96,11 @@ router.post('/login',(req,res)=>{
                 });
             }
             else{
+                //if password is wrong,
                 req.session.is_logined  = false;
                 console.log('비밀번호가 틀립니다.');
-                req.session.save(function(){ // 세션 스토어에 적용하는 작업
-                    /*res.render('login',{ // 정보전달*/
+                req.session.save(function(){
                     is_logined : false
-                    /*});*/
                     res.send("<script>alert('ID or password is wrong..');  location.href='/login';</script>");
                 });
 
@@ -124,10 +110,8 @@ router.post('/login',(req,res)=>{
             req.session.is_logined  = false;
             
             console.log('로그인 실패');
-            req.session.save(function(){ // 세션 스토어에 적용하는 작업
-                //res.render('login',{ // 정보전달
+            req.session.save(function(){
                     is_logined : false
-                //});
                 res.send("<script>alert('ID or password is wrong..');  location.href='/login';</script>");
             });
         }
@@ -135,11 +119,12 @@ router.post('/login',(req,res)=>{
 });
 
 router.get('/register',(req,res)=>{
-    console.log('회원가입 페이지');
+    //user register page loading
     res.render('new_register');
 });
 
 router.post('/register',(req,res)=>{
+    //user register info check
     console.log('회원가입 하는중')
     const body = req.body;
     const id = body.id;
@@ -163,19 +148,18 @@ router.post('/register',(req,res)=>{
 });
 
 router.get('/logout',(req,res)=>{
-    console.log('로그아웃 성공');
+    //logout
     req.session.destroy(function(err){
-        // 세션 파괴후 할 것들
         res.redirect('/');
     });
 
 });
 
 router.get('/show',(req,res)=>{
+    //web chat page loading
     if(req.session.is_logined  == true){
-        console.log('화상상담');
-        req.session.save(function(){ // 세션 스토어에 적용하는 작업
-            res.render('index',{ // 정보전달
+        req.session.save(function(){
+            res.render('index',{
                 name : req.session.name,
                 ID : req.session.ID,
                 age : req.session.age,
@@ -189,6 +173,7 @@ router.get('/show',(req,res)=>{
 });
 
 router.post('/image', upload.single("image"), function(req, res, next) {
+    //web chat page, send image to the s3 server
     try {
         console.log(req.file);
     
@@ -203,13 +188,13 @@ router.post('/image', upload.single("image"), function(req, res, next) {
 });
 
 router.get('/mypage',(req,res)=>{
-    console.log('마이페이지');
+    //mypage loading
     var sql = "select idx, userName, doctorName, reason,content, date_format(regdate,'%Y-%m-%d %H:%i:%s') regdate from consulting where userID=?"
 
     connection.query(sql,req.session.ID,function (err, rows) {
         if (err) console.error("err : " + err);
-        req.session.save(function(){ // 세션 스토어에 적용하는 작업
-            res.render('mypage',{ // 정보전달
+        req.session.save(function(){
+            res.render('mypage',{
                 title: '게시판 리스트',
                 rows: rows,
                 name : req.session.name,
@@ -223,9 +208,9 @@ router.get('/mypage',(req,res)=>{
 
 
 router.get('/charts',(req,res)=>{
-    console.log('차트');
-    req.session.save(function(){ // 세션 스토어에 적용하는 작업
-        res.render('charts',{ // 정보전달
+    //chart page loading
+    req.session.save(function(){
+        res.render('charts',{
             name : req.session.name,
             ID : req.session.ID,
             age : req.session.age,
@@ -235,14 +220,14 @@ router.get('/charts',(req,res)=>{
 });
 
 router.get('/tables',(req,res)=>{
-    console.log('테이블');
+    //table page loading
     var page = req.params.page;
     var sql = "select idx, userName, doctorName, reason,content, date_format(regdate,'%Y-%m-%d %H:%i:%s') regdate from consulting where userID=?"
 
     connection.query(sql,req.session.ID,function (err, rows) {
         if (err) console.error("err : " + err);
-        req.session.save(function(){ // 세션 스토어에 적용하는 작업
-            res.render('tables',{ // 정보전달
+        req.session.save(function(){
+            res.render('tables',{
                 title: '게시판 리스트',
                 rows: rows,
                 name : req.session.name,
@@ -256,6 +241,7 @@ router.get('/tables',(req,res)=>{
 
 router.get('/update/:idx',function(req,res,next)
 {
+    //table update page loading
     var idx = req.params.idx;
     var sql = "select idx, userName, doctorName, reason, content, date_format(regdate,'%Y-%m-%d %H:%i:%s') regdate from consulting where idx=?";
     connection.query(sql,[idx], function(err,row)
@@ -277,13 +263,13 @@ router.get('/update/:idx',function(req,res,next)
 
 router.post('/update',function(req,res,next)
 {
+    //table update info send to DB(mysql) server
     var idx = req.body.idx;
     var reason = req.body.reason;
     var content = req.body.content;
     var passwd = req.body.passwd;
     var datas = [reason,content,idx,passwd];
     console.log(datas)
-    //지금 인덱스 받아오게끔 만들어야 함.
     var sql = "update consulting set reason=?, content=? where idx=? and passwd=?";
     connection.query(sql,datas, function(err,result)
     {
@@ -300,6 +286,7 @@ router.post('/update',function(req,res,next)
 });
 
 router.get('/write', function(req,res,next){
+    //write page page loading
     res.render('write',{title : "게시판 글 쓰기"});
 });
 
