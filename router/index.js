@@ -148,7 +148,7 @@ router.post('/register',(req,res)=>{
 });
 
 router.get('/logout',(req,res)=>{
-    //logout
+    //logout Page loading
     req.session.destroy(function(err){
         res.redirect('/');
     });
@@ -291,6 +291,7 @@ router.get('/write', function(req,res,next){
 });
 
 router.post('/write', function(req,res,next){
+    //write consulting log in board 
     var userID = req.body.userID;
     var doctorID = req.body.doctorID;
     var reason = req.body.reason;
@@ -298,8 +299,6 @@ router.post('/write', function(req,res,next){
     var passwd = req.body.passwd;
     var datas = [userID,doctorID,userID,doctorID,reason,content,passwd];
 
-    console.log(datas);
-    //중요: 여기서 이름하고 ID 받아오는; 방법 생각해야 함.
     var sql = "insert into consulting(userID, doctorID,userName,doctorName, reason, content, regdate, passwd,hit) values(?,?,?,?,?,?,now(),?,0);";
     connection.query(sql,datas, function (err, rows) {
         if (err) console.error("err : " + err);
@@ -309,6 +308,7 @@ router.post('/write', function(req,res,next){
 
 router.get('/delete/:idx',function(req,res,next)
 {
+    //loading consulting details page
     var idx = req.params.idx;
     var sql = "select idx, userName, doctorName, reason, content, date_format(regdate,'%Y-%m-%d %H:%i:%s') regdate from consulting where idx=?";
     connection.query(sql,[idx], function(err,row)
@@ -330,6 +330,7 @@ router.get('/delete/:idx',function(req,res,next)
 
 router.post('/delete',function(req,res,next)
 {
+    //delete consulting log
     var idx = req.body.idx;
     var passwd = req.body.passwd;
     var datas = [idx,passwd];
@@ -350,6 +351,7 @@ router.post('/delete',function(req,res,next)
 });
 
 router.get('/media',(req,res)=>{
+    //load a eduation media clip list page
     var sql = "select idx, title, link, registrant, category ,recommend,content, date_format(regdate,'%Y-%m-%d %H:%i:%s') regdate from eduboard"
 
     console.log('교육영상');
@@ -368,6 +370,7 @@ router.get('/media',(req,res)=>{
 });
 
 router.get('/addmedia',(req,res)=>{
+    //load a Add educational video page.
     console.log('교육영상 추가');
     req.session.save(function(){
         res.render('add-media',{
@@ -379,6 +382,7 @@ router.get('/addmedia',(req,res)=>{
 });
 
 router.post('/addmedia', function(req,res,next){
+    //Add educational video
     var title = req.body.title;
     var registrant = req.body.registrant;
     var category = req.body.category;
@@ -387,8 +391,6 @@ router.post('/addmedia', function(req,res,next){
     var link = req.body.link;
     var datas = [title,link,registrant,category,content,recommend];
 
-    console.log(datas);
-    //중요: 여기서 이름하고 ID 받아오는; 방법 생각해야 함.
     var sql = "insert into eduboard(title, link, registrant, category, content, recommend , regdate) values(?,?,?,?,?,?,now());";
     connection.query(sql,datas, function (err, rows) {
         if (err) console.error("err : " + err);
@@ -397,7 +399,6 @@ router.post('/addmedia', function(req,res,next){
 });
 
 router.get('/mediapage',(req,res)=>{
-    console.log('교육영상');
     req.session.save(function(){
         res.render('media-page',{
             name : req.session.name,
@@ -409,6 +410,7 @@ router.get('/mediapage',(req,res)=>{
 
 router.get('/mediapage/:idx',function(req,res,next)
 {
+    //Load educational video detail page.
     var idx = req.params.idx;
     var sql = "select idx, title, link, registrant, category , recommend,content, date_format(regdate,'%Y-%m-%d %H:%i:%s') regdate from eduboard where idx=?";
     connection.query(sql,[idx], function(err,row)
@@ -431,7 +433,7 @@ router.get('/mediapage/:idx',function(req,res,next)
 });
 
 router.get('/missionpage',(req,res)=>{
-    console.log('미션');
+    //Load a mission page
     req.session.save(function(){ 
         res.render('missionList',{
             name : req.session.name,
@@ -443,6 +445,7 @@ router.get('/missionpage',(req,res)=>{
 
 router.get('/missionpage/:idx',function(req,res,next)
 {
+    //Load a mission page per each user
     var idx = req.params.idx;
     var sql = "select idx, mission, content, success from missionList where userID=? and regdate=?";
     connection.query(sql,[req.session.ID,idx], function(err,rows)
@@ -461,6 +464,7 @@ router.get('/missionpage/:idx',function(req,res,next)
 });
 
 router.post('/missioncheck', function(req,res,next){
+    //send a mission check sign to the DB
     var idx = req.body.idx;
     var datas = [true,idx];
     var sql = "update missionList set success=? where idx=?";
@@ -478,6 +482,7 @@ router.post('/missioncheck', function(req,res,next){
 });
 
 router.post('/addmission', function(req,res,next){
+    //send a add mission command to the DB
     var doctorID = req.body.doctorID;
     var userName = req.body.userName;
     var userID = req.body.userID;
@@ -495,7 +500,7 @@ router.post('/addmission', function(req,res,next){
 });
 
 router.get('/missionCalendar',(req,res)=>{
-    console.log('캘린더');
+    //Load a mission calendar
     req.session.save(function(){
         res.render('calendar',{
             name : req.session.name,
@@ -506,8 +511,8 @@ router.get('/missionCalendar',(req,res)=>{
 });
 
 router.get('/care',(req,res)=>{
+    //load a Patient care page for doctor
     var sql = 'select missionList.userID, missionList.userName, round(count(case when missionList.success=1 then 1 end)/count(missionList.success)*100,1) as per from missionList where missionList.doctorID = ? group by missionList.userID order by missionList.userID DESC;'
-    console.log('환자관리');
     //and missionList.regdate > ? and missionList.regdate <= ? 
     var doctorID = req.session.ID;
     var today = new Date();
@@ -539,7 +544,7 @@ router.get('/care',(req,res)=>{
 });
 
 router.get('/caredetail/:id',(req,res)=>{
-    console.log('환자관리');
+    //load a care each patient's detail page for doctor
     var userID = req.params.id;
     var sql = "select userID, userName, mission, content, success, date_format(regdate,'%Y-%m-%d') regdate from missionList where userID=? and doctorID=?"
 
